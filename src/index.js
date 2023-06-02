@@ -1,3 +1,1 @@
-{
-  /* <include src="./JS/api_key.js"></include>; */
-}
+import './JS/api_key';
