@@ -5,11 +5,11 @@
 
 :root {
   --accent: #f87719;
-  --black: #111111;
+  --black-bg: #111111;
   --dark: #282828;
   --gray: #595959;
   --light-gray: #b7b7b7;
-  --light: #f8f8f8;
+  --light-text: #f8f8f8;
   --white: #ffffff;
   --linear-one: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   --linear-two: linear-gradient(
@@ -20,15 +20,14 @@
   //   --box-shadow: 1px 1px 14px rgba(1, 1, 1, 0.25);
 }
 
-// body {
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 12px;
-//   line-height: 1.25;
-//   font-weight: 400;
-//   letter-spacing: 0.02em;
-//   color: var(--text-color);
-//   background-color: var(--background-color);
-// }
+body {
+  font-family: 'Roboto', 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  color: var(--light-text);
+  background-color: var(--black-bg);
+}
 
 .container {
   max-width: 1246px;
