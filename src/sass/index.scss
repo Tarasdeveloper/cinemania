@@ -3,6 +3,7 @@
 @import './fonts';
 @import './reset';
 
+
 :root {
   --accent: #f87719;
   --black-bg: #111111;
@@ -30,9 +31,10 @@ body {
 }
 
 .container {
-  max-width: 1246px;
+  // max-width: 1246px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .hidden {
@@ -47,3 +49,6 @@ body {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+
+@import './hero-getstart.scss';

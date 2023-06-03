@@ -1,0 +1,60 @@
+.hero-getstart__section {
+  padding-top: 169px;
+  padding-bottom: 169px;
+
+  background: linear-gradient(
+      83.16deg,
+      #111111 36.85%,
+      rgba(17, 17, 17, 0) 60.05%
+    ),
+    url(/src/images/children.jpg);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-repeat: no-repeat;
+}
+
+.hero-getstart__title {
+  width: 464px;
+  height: 150px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+}
+
+.hero-getstart__text {
+  width: 464px;
+  height: 76px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.18;
+  display: flex;
+  align-items: center;
+
+  color: var(--light-text);
+
+  margin-top: 16px;
+}
+
+.hero-getstart__btn {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black-bg);
+  text-align: center;
+  padding: 12px 24px;
+
+  background: var(--linear-one);
+  border-radius: 74px;
+
+  margin-top: 32px;
+}
