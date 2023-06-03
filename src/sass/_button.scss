@@ -1,5 +1,5 @@
 button { 
-    margin: 10px;
+    margin: 10px; //! delete before push 
 }
 
 //! Стилі для мобайл
@@ -16,11 +16,9 @@ button {
             font-size: 12px;  
             line-height: 14px;
             color: var(--black-bg);
-            transition: color 250ms linear;
+            transition: color var(--transit);
             position: relative;
             z-index: 1000;
-            // margin-top: 10px; //! Delete before push 
-            // margin-left: 10px; //! Delete before push 
     }
 
     .load-btn::after,
@@ -34,7 +32,7 @@ button {
         right: 0px;
         bottom: 0px;
         background: var(--linear-one);
-        transition: background-color 250ms linear;
+        transition: background-color var(--transit);
         border-radius: 74px;
         z-index: -1;
     }
@@ -56,14 +54,13 @@ button {
 
     .load-btn:hover, .load-btn:focus,
     .search-btn:hover, .search-btn:focus,
-     .trailer-btn:hover, .trailer-btn:focus,
+    .trailer-btn:hover, .trailer-btn:focus,
     .remind-btn:hover, .remind-btn:focus {
         color: var(--accent); 
         background: var(--white);
     }
 
     .remove-btn, .add-btn {
-        // margin: 10px; //! delete before push 
         padding: 12px 24px; 
         border: 1px solid;
         border-radius: 74px;
@@ -72,9 +69,14 @@ button {
         font-size: 12px;
         line-height: 14px;
         color: var(--white);
-        transition: color 250ms linear;
+        transition: color var(--transit);
         position: relative;
         z-index: 1000;
+    }   
+    
+    .remove-btn.day, .add-btn.day {
+        color: var(--black-bg);
+        transition: color var(--transit);
     }    
 
     .remove-btn::after, .add-btn::after {
@@ -85,9 +87,14 @@ button {
         right: 0px;
         bottom: 0px;
         background-color: var(--black-bg);
-        transition: background-color 250ms linear;
+        transition: background-color var(--transit);
         border-radius: 74px;
         z-index: -1;
+    }
+
+    .remove-btn.day::after, .add-btn.day::after {
+        background-color: var(--white);
+        transition: background-color var(--transit);
     }
 
     .remove-btn::before, .add-btn::before {
@@ -98,7 +105,7 @@ button {
         right: -1px;
         bottom: -1px;
         background: var(--linear-one);
-        transition: background 250ms linear;
+        transition: background var(--transit);
         border-radius: 74px;
         z-index: -2;
         }
@@ -129,8 +136,17 @@ button {
     .remind-btn:focus::after { 
         background: var(--white);
     }
-    
 
+    .remove-btn.day:hover::after,
+    .remove-btn.day:focus::after,
+    .add-btn.day:hover::after,
+    .add-btn.day:focus::after,
+    .remove-btn.day:hover::before,
+    .remove-btn.day:focus::before,
+    .add-btn.day:hover::before,
+    .add-btn.day:focus::before {
+        background: var(--black-bg);
+    }
 }
 //! Стилі для таблета
 @media screen and (min-width: 768px) {
@@ -141,6 +157,10 @@ button {
         font-size: 14px;
         line-height: 16px;
     }
+
+    .remove-btn, .add-btn {
+        line-height: 16px;
+    }    
 }
 //! Стилі для десктопа
 @media screen and (min-width: 1280px) {
@@ -154,4 +174,5 @@ button {
         font-size: 16px;
         line-height: 24px;
     } 
+  
 }
