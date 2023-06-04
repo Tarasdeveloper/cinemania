@@ -2,49 +2,292 @@
     margin: 15px auto; //! Delete before push 
 }
 
-
 .modal-window {
-    width: 280px;
-    background: var(--black-bg);
-    box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
-    border-radius: 16px;
-    padding-top: 52px;
-    padding-left: 16px;
-    padding-right: 16px;
-    transition: background var(--transit), box-shadow var(--transit);
     margin: 15px auto; //! Delete before push 
 }
 
-.modal-window.day {
-    background: var(--white);    
-    box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22)
+
+//! Стилі для мобайл
+@media screen and (min-width: 320px) {
+    .modal-window {
+            width: 280px;
+            background: var(--black-bg);
+            box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+            border-radius: 16px;
+            padding: 52px 16px;
+            transition: background var(--transit), box-shadow var(--transit);
+            position: relative;
+        }
+    
+        .modal-image {
+            border-radius: 5px;
+            margin-bottom: 22px;
+            width: 248px;
+            height: 315px;
+        }
+    
+        .modal-title {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 29px;
+            transition: color var(--transit);
+        }
+    
+        .modal-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            row-gap: 12px;
+        }
+    
+        .modal-list-item {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 16px;
+        }
+    
+        .modal-item-name {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            color: var(--light-gray);
+        }
+    
+        .modal-item-value {
+            width: 92px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            color: var(--white);
+            display: flex;
+            justify-content: start;
+        }
+    
+        .modal-vote,
+        .modal-votes {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.16;
+            text-transform: uppercase;
+            color: var(--black-bg);
+            padding: 1px 8px;
+            background: var(--white);
+            border-radius: 5px;
+            border: 0px;
+        }
+    
+        .modal-votes {
+            padding: 1px 4px;
+        }
+    
+        .modal-item-slash {
+            margin-left: 7px;
+            margin-right: 4px;
+            width: 11px;
+            display: flex;
+            justify-content: center;
+        }
+    
+    
+        .modal-about-title {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: var(--light-gray);
+            margin-bottom: 12px;
+        }
+    
+        .modal-about-description {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.66;
+            color: var(--light-text);
+            margin-bottom: 16px;
+        }
+    
+        .modal-close-button {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 20px;
+            right: 16px;
+            border: 0px;
+        }
+    
+        .modal-close-icon {
+            width: 100%;
+            height: 100%;
+            stroke: var(--light-text);
+            transition: stroke var(--transit);
+    
+        }
+    
+        .modal-window.day {
+            background: var(--white);
+            box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22)
+        }
+    
+        .modal-window.day .modal-close-icon {
+            stroke: var(--dark);
+        }
+    
+        .modal-window.day .modal-title,
+        .modal-window.day .modal-item-name,
+        .modal-window.day .modal-about-title {
+            color: var(--black-bg);
+        }
+    
+        .modal-window.day .modal-vote,
+        .modal-window.day .modal-votes {
+            background-color: var(--light-text);
+            color: var(--dark);
+        }
+    
+        .modal-window.day .modal-item-value,
+        .modal-window.day .modal-about-description {
+            color: var(--dark);
+        }
+    
+        .modal-window.day .modal-item-slash {
+            color: var(--light-gray);
+        }
 }
+//! Стилі для таблета
+@media screen and (min-width: 768px) {
+    .modal-window {
+         width: 704px;
+         padding-top: 44px;
+         padding-left: 44px;
+         padding-bottom: 44px;
+         display: flex;
+         flex-wrap: wrap;
+     }
 
-.modal-image {
-    border-radius: 5px;
-    margin-bottom: 22px;
+    .modal-image {
+        margin-bottom: 0;
+        width: 294px;
+        height: 400px;
+    }
+    
+        .modal-title {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 29px;
+            transition: color var(--transit);
+        }
+    
+        .modal-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            row-gap: 12px;
+        }
+    
+        .modal-list-item {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 16px;
+        }
+    
+        .modal-item-name {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            color: var(--light-gray);
+        }
+    
+        .modal-item-value {
+            width: 92px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            color: var(--white);
+            display: flex;
+            justify-content: start;
+        }
+    
+        .modal-vote,
+        .modal-votes {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.16;
+            text-transform: uppercase;
+            color: var(--black-bg);
+            padding: 1px 8px;
+            background: var(--white);
+            border-radius: 5px;
+            border: 0px;
+        }
+    
+        .modal-votes {
+            padding: 1px 4px;
+        }
+    
+        .modal-item-slash {
+            margin-left: 7px;
+            margin-right: 4px;
+            width: 11px;
+            display: flex;
+            justify-content: center;
+        }
+    
+    
+        .modal-about-title {
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.14;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: var(--light-gray);
+            margin-bottom: 12px;
+        }
+    
+        .modal-about-description {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.66;
+            color: var(--light-text);
+            margin-bottom: 16px;
+        }
+    
+        .modal-close-button {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 20px;
+            right: 16px;
+            border: 0px;
+        }
+    
+        .modal-close-icon {
+            width: 100%;
+            height: 100%;
+            stroke: var(--light-text);
+            transition: stroke var(--transit);
+    
+        }
 }
-
-.modal-title {
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.15;
-    color: var(--white);
-    margin-bottom: 29px;
-}
-
-.modal-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-list-item {}
-
-.modal-item-name {}
-
-.modal-item-value {}
-
-.modal-vote {}
-
-.modal-votes {}
+//! Стилі для десктопа
+@media screen and (min-width: 1280px) {}
