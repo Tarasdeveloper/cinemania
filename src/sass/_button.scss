@@ -147,6 +147,88 @@ button {
     .add-btn.day:focus::before {
         background: var(--black-bg);
     }
+
+    .switch {
+        background:var(--linear-one);
+        border-radius: 194px;
+        border: 0px;
+        width: 44px;
+        height: 18px;
+        padding-left: 2px;
+        padding-right: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .switch::after {
+        content: '';
+        display: block;
+        width: 13.2px;
+        height: 13.5px;
+        background-color: var(--white);
+        border: 0px;
+        border-radius: 50%;
+        position: absolute;
+        right: 2px;
+        z-index: 1;
+        transition: transform var(--transit);
+    }
+   
+    .icon-moon {
+        position: absolute;
+        left: 3px;
+        width: 9.5px;
+        height: 9.7px;
+        z-index: 2;
+        transition: transform var(--transit);
+    }
+
+    .icon-moon-line {
+        width: 4px;
+        height: 10px;
+        position: absolute;
+        z-index: 2;
+        transform: translate(36px, 0);
+        transition: transform var(--transit);
+        transform: rotateY(0deg);
+    }
+
+    .not-active{
+        visibility: hidden;
+    }
+
+    .switch.day::after {
+        right: 0px; 
+        transform: translateX(-29px);
+    }
+
+    .switch.day .icon-moon-line {
+        right: 0px;
+        transform: translate(-38px, 0px) rotateY(180deg);
+    }
+
+    .switch.day .icon-moon {
+        transform: rotate(360deg);
+        z-index: -1;
+    }
+
+    .icon-sun {
+        position: absolute;
+        width: 9.2px;
+        height: 9px;
+        right: 4px;
+        top: 4.5px;
+        z-index: -1;
+        transition: transform var(--transit);
+    }
+
+    .switch.day .icon-sun {
+        z-index: 2;
+        transform: rotate(45deg);
+    }
 }
 //! Стилі для таблета
 @media screen and (min-width: 768px) {
@@ -161,6 +243,48 @@ button {
     .remove-btn, .add-btn {
         line-height: 16px;
     }    
+    
+    .switch {
+        width: 60px;
+        height: 24px;
+    }
+
+    .switch::after {
+        width: 18px;
+        height: 18px;
+        right: 3px;
+    }
+   
+    .icon-moon {
+        width: 13px;
+        height: 13px;
+        left: 4px;
+    }
+
+    .icon-moon-line {
+      height:14px; 
+      transform: translate(50px, 0);
+     }
+
+    .switch.day::after {
+      transform: translateX(-39px);
+     }
+
+     .switch.day .icon-moon-line {
+      transform: translate(-52px, 0px) rotateY(180deg);
+    }
+
+     .switch.day .icon-moon {
+      transform: rotate(360deg);
+      z-index: -1;
+     }
+
+    .icon-sun {
+        width: 14px;
+        height: 14px;
+        top: 5px;
+    }
+   
 }
 //! Стилі для десктопа
 @media screen and (min-width: 1280px) {
