@@ -20,13 +20,13 @@ const screenWidthResizing = screenWidth => {
 
 screenWidthResizing(screenWidth);
 
-switchDayBtn.addEventListener('click', evt => {
-  removeBtn.classList.toggle('day');
-  addBtn.classList.toggle('day');
-  globalSearchBtn.classList.toggle('day');
-  evt.currentTarget.classList.toggle('day');
+switchDayBtn.addEventListener('click', ({ currentTarget }) => {
+  if (removeBtn !== null) removeBtn.classList.toggle('day');
+  if (addBtn !== null) addBtn.classList.toggle('day');
+  if (globalSearchBtn !== null) globalSearchBtn.classList.toggle('day');
+  currentTarget.classList.toggle('day');
 
-  if (removeBtn.classList.contains('day')) {
+  if (currentTarget.classList.contains('day')) {
     body.style.backgroundColor = '#FFFFFF';
   } else {
     body.style.backgroundColor = '#111111';
