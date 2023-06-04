@@ -7,10 +7,12 @@
     .load-btn,
     .search-btn,
     .trailer-btn, 
-    .remind-btn {
+    .remind-btn,
+    .get-started-btn,
+    .more-details-btn {
             border: 1px solid;
             border-radius: 74px;
-            padding: 12px 24px;
+            padding: 11px 24px;
             font-family: 'Roboto';
             font-weight: 500;
             font-size: 12px;  
@@ -21,10 +23,17 @@
             z-index: 1000;
     }
 
+    .more-details-btn  {
+        background-color: transparent;
+        color: var(--white);
+    }
+
     .load-btn::after,
     .search-btn::after,
     .trailer-btn::after,
-    .remind-btn::after { 
+    .remind-btn::after, 
+    .get-started-btn::after
+    { 
         content: "";
         position: absolute;
         top: 0px;
@@ -37,10 +46,13 @@
         z-index: -1;
     }
 
+
     .load-btn::before,
     .search-btn::before,
     .trailer-btn::before,
-    .remind-btn::before {
+    .remind-btn::before,
+    .get-started-btn::before,
+    {
         content: "";
         position: absolute;
         top: -1px;
@@ -55,7 +67,8 @@
     .load-btn:hover, .load-btn:focus,
     .search-btn:hover, .search-btn:focus,
     .trailer-btn:hover, .trailer-btn:focus,
-    .remind-btn:hover, .remind-btn:focus {
+    .remind-btn:hover, .remind-btn:focus,
+    .get-started-btn:hover, .get-started-btn:focus {
         color: var(--accent); 
         background: var(--white);
     }
@@ -133,9 +146,17 @@
     .load-btn:focus::after,
     .search-btn:focus::after,
     .trailer-btn:focus::after,
-    .remind-btn:focus::after { 
+    .remind-btn:focus::after,
+    .get-started-btn:hover::after,
+    .get-started-btn:focus::after { 
         background: var(--white);
     }
+
+    .more-details-btn:hover, .more-details-btn:focus { 
+        color: var(--accent);
+    }
+
+ 
 
     .remove-btn.day:hover::after,
     .remove-btn.day:focus::after,
@@ -308,6 +329,13 @@
         line-height: 16px;
     }
 
+    .get-started-btn, .more-details-btn {
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
     .remove-btn, .add-btn {
         line-height: 16px;
     }    
@@ -376,5 +404,13 @@
      .global-search-btn {
         width: 48px;
         height: 48px;
+    }
+
+    
+    .get-started-btn, .more-details-btn {
+        font-size: 16px;
+        line-height: 24px;
+        padding-top: 11px;
+        padding-bottom: 11px;
     }
 }
