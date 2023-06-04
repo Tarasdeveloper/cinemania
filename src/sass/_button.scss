@@ -229,6 +229,74 @@
         z-index: 2;
         transform: rotate(45deg);
     }
+
+    .global-search-btn {
+        width: 40px;
+        height: 40px;
+        border: 0px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 100;
+    }
+
+    .search-icon {
+        width: 18px;
+        height: 18px;
+        fill: transparent;
+    }
+
+     .search-icon {
+        stroke: var(--white);
+    }
+
+    .global-search-btn::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: var(--linear-one);
+        transition: background var(--transit);
+        border-radius: 50%;
+        z-index: -2;
+    }
+
+   .global-search-btn::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: var(--linear-one);
+        transition: background-color var(--transit);
+        border-radius: 50%;
+        z-index: -1;
+    }
+
+    .global-search-btn:hover::after, 
+    .global-search-btn:focus::after  {
+        background-color: var(--white);
+    }
+
+    .global-search-btn:hover .search-icon, 
+    .global-search-btn:focus .search-icon  { 
+        stroke: var(--accent);
+    }
+
+    .global-search-btn.day .search-icon {
+        stroke: var(--black-bg);
+    }
+    
+    .global-search-btn.day:hover .search-icon, 
+    .global-search-btn.day:focus .search-icon  { 
+        stroke: var(--accent);
+    }
+   
 }
 //! Стилі для таблета
 @media screen and (min-width: 768px) {
@@ -285,6 +353,11 @@
         top: 5px;
     }
    
+    .global-search-btn {
+        width: 44px;
+        height: 44px;
+    }
+
 }
 //! Стилі для десктопа
 @media screen and (min-width: 1280px) {
@@ -294,9 +367,14 @@
         font-size: 18px;
         line-height: 28px;
     }
+
     .trailer-btn {
         font-size: 16px;
         line-height: 24px;
     } 
-  
+    
+     .global-search-btn {
+        width: 48px;
+        height: 48px;
+    }
 }
