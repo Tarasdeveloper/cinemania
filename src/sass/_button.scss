@@ -1,6 +1,6 @@
-button { 
-    margin: 10px; //! delete before push 
-}
+// button { 
+//     margin: 10px; //! delete before push 
+// }
 
 //! Стилі для мобайл
 @media screen and (min-width: 320px) {
@@ -9,10 +9,11 @@ button {
     .trailer-btn, 
     .remind-btn,
     .get-started-btn,
-    .more-details-btn {
+    .more-details-btn,
+    .orange-add-btn {
             border: 1px solid;
             border-radius: 74px;
-            padding: 11px 24px;
+            padding: 11px 23.5px;
             font-family: 'Roboto';
             font-weight: 500;
             font-size: 12px;  
@@ -32,7 +33,8 @@ button {
     .search-btn::after,
     .trailer-btn::after,
     .remind-btn::after, 
-    .get-started-btn::after
+    .get-started-btn::after,
+    .orange-add-btn::after
     { 
         content: "";
         position: absolute;
@@ -51,7 +53,8 @@ button {
     .search-btn::before,
     .trailer-btn::before,
     .remind-btn::before,
-    .get-started-btn::before
+    .get-started-btn::before,
+    .orange-add-btn::before
     {
         content: "";
         position: absolute;
@@ -68,7 +71,8 @@ button {
     .search-btn:hover, .search-btn:focus,
     .trailer-btn:hover, .trailer-btn:focus,
     .remind-btn:hover, .remind-btn:focus,
-    .get-started-btn:hover, .get-started-btn:focus {
+    .get-started-btn:hover, .get-started-btn:focus,
+    .orange-add-btn:hover, .orange-add-btn:focus {
         color: var(--accent); 
         background: var(--white);
     }
@@ -148,7 +152,9 @@ button {
     .trailer-btn:focus::after,
     .remind-btn:focus::after,
     .get-started-btn:hover::after,
-    .get-started-btn:focus::after { 
+    .get-started-btn:focus::after,
+    .orange-add-btn:hover::after,
+    .orange-add-btn:focus:after { 
         background: var(--white);
     }
 
@@ -324,7 +330,8 @@ button {
     .load-btn,
     .search-btn,
     .trailer-btn, 
-    .remind-btn {
+    .remind-btn, 
+    .orange-add-btn {
         font-size: 14px;
         line-height: 16px;
     }
