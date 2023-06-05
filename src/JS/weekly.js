@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 function fetchFilmsWeeklyTrends() {
-  const apiKeyWeeklyTrends = '839ee1ac45e2249141bd738796b376ad'; // Вставте свій API ключ
+  const apiKeyWeeklyTrends = '839ee1ac45e2249141bd738796b376ad';
   const trendingUrlWeeklyTrends = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKeyWeeklyTrends}`;
 
   fetch(trendingUrlWeeklyTrends)
@@ -48,7 +48,7 @@ function createFilmCardWeeklyTrends(movie, data) {
   if (movie.poster_path) {
     const posterUrlWeeklyTrends = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : '/src/images/coming_soon_default.jpg'; // Встановіть шлях до вашої дефолтної картинки
+      : '/src/images/coming_soon_default.jpg'; // шлях до вашої дефолтної картинки
 
     // const posterUrlWeeklyTrends = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const posterWeeklyTrends = document.createElement('img');
@@ -134,7 +134,7 @@ function createFilmCardWeeklyTrends(movie, data) {
       }
     }
 
-    // Ініціалізувати зірковий рейтинг RateYo
+    // Ініціалізування зіркового рейтингу RateYo
     // $(ratingElement).rateYo({
     //   rating: movieData.vote_average / 2, // Поділити рейтинг на 2, оскільки RateYo використовує шкалу від 0 до 5
     //   readOnly: true, // не можна змінювати рейтинг
@@ -153,8 +153,8 @@ function createFilmCardWeeklyTrends(movie, data) {
 
 function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
   const yearFilmWeeklyTrends = releaseDateFilmWeeklyTrends
-    ? releaseDateFilmWeeklyTrends.slice(0, 4)
-    : 'Not yet'; // Отримуємо рік з дати
+    ? releaseDateFilmWeeklyTrends.slice(0, 4) // Отримуємо рік з дати
+    : 'Not yet'; 
 
   if (genresArrayFilmWeeklyTrends.length === 0) {
     return 'Not yet | ' + yearFilmWeeklyTrends;
@@ -177,7 +177,6 @@ function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
 
 function openModal(movie, data) {
   // Виконати дії для відкриття модального вікна з детальною інформацією про фільм
-  // Ви можете викликати власну функцію або використовувати бібліотеки/інструменти для створення модального вікна.
   // У цьому коді я просто виведу інформацію про фільм у консоль для прикладу:
   console.log('Open Modal');
   console.log('Movie Title:', movie.title);
