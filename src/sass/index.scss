@@ -1,4 +1,5 @@
 @import './common';
+@import './header';
 @import './home';
 @import './fonts';
 @import './reset';
@@ -7,6 +8,7 @@
 
 :root {
   --accent: #f87719;
+  --bg-mob-menu:#171717;
   --black-bg: #111111;
   --dark: #282828;
   --gray: #595959;

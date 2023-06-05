@@ -1,0 +1,97 @@
+<header class="header">
+  <div class="container">
+    <div class="header__contener">
+      <nav class="header__nav">
+        <a class="header__nav-link" href="#">
+          <img
+            class="header__nav-logo"
+            src="/src/images/logotyp.png"
+            alt="Logo Cinema"
+          />
+          <h2 class="header__nav-text">Cinemania</h2>
+        </a>
+
+        <button class="header__burger js-open-menu" type="button">Menu</button>
+        <ul class="header__menu">
+          <li><a class="header__links" href="#">Home</a></li>
+          <li><a class="header__links" href="#">Catalog</a></li>
+          <li>
+            <a class="header__links" href="/src/partials/mylibrary.html"
+              >My Library</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <button type="button" class="switch">
+        <svg class="icon-moon">
+          <use href="/src/images/sprite.svg#icon-moon"></use>
+        </svg>
+        <svg
+          class="icon-moon-line first"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+        >
+          <path
+            stroke="url(#a)"
+            stroke-linecap="round"
+            stroke-width="1.2"
+            d="M.9982.9307C3.1094 3.2382 3.1015 6.988.9805 9.3063"
+          />
+          <defs>
+            <linearGradient
+              id="a"
+              x1="1.1754"
+              x2="3.9737"
+              y1="1.5291"
+              y2="2.1928"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FFC226" />
+              <stop offset="1" stop-color="#F84119" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg class="icon-moon-line second" width="4" height="14" fill="none">
+          <path
+            stroke="url(#a)"
+            stroke-linecap="round"
+            stroke-width="1.2"
+            d="M1.1765 1.5742c2.879 3.0767 2.8681 8.0766-.0242 11.1676"
+          />
+          <defs>
+            <linearGradient
+              id="a"
+              x1="1.4182"
+              x2="5.2247"
+              y1="2.3722"
+              y2="3.2955"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FFC226" />
+              <stop offset="1" stop-color="#F84119" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg class="icon-sun">
+          <use href="/src/images/sprite.svg#icon-sun"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop hidden-menu">
+  <div class="mob-menu js-menu-container">
+    <div class="mob-menu__link">
+      <a href="#">
+        <img class="nav-logo" src="/src/images/logotyp.png" alt="Logo Cinema" />
+      </a>
+    </div>
+
+    <ul class="mob-menu__nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Catalog</a></li>
+      <li><a href="#">My Library</a></li>
+    </ul>
+  </div>
+</div>
