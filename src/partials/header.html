@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header__contener">
       <nav class="header__nav">
-        <a class="header__nav-link" href="#">
+        <a class="header__nav-link js-logo-links" href="#">
           <img
             class="header__nav-logo"
             src="/src/images/logotyp.png"
@@ -13,10 +13,16 @@
 
         <button class="header__burger js-open-menu" type="button">Menu</button>
         <ul class="header__menu">
-          <li><a class="header__links" href="#">Home</a></li>
-          <li><a class="header__links" href="#">Catalog</a></li>
           <li>
-            <a class="header__links" href="/src/partials/mylibrary.html"
+            <a class="header__links js-header-links current-color" href="#"
+              >Home</a
+            >
+          </li>
+          <li><a class="header__links js-header-links" href="#">Catalog</a></li>
+          <li>
+            <a
+              class="header__links js-header-links"
+              href="/src/partials/mylibrary.html"
               >My Library</a
             >
           </li>
@@ -83,15 +89,15 @@
 <div class="backdrop hidden-menu">
   <div class="mob-menu js-menu-container">
     <div class="mob-menu__link">
-      <a href="#">
+      <a class="js-logo-links" href="#">
         <img class="nav-logo" src="/src/images/logotyp.png" alt="Logo Cinema" />
       </a>
     </div>
 
     <ul class="mob-menu__nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Catalog</a></li>
-      <li><a href="#">My Library</a></li>
+      <li><a class="js-header-links current-color" href="#">Home</a></li>
+      <li><a class="js-header-links" href="#">Catalog</a></li>
+      <li><a class="js-header-links" href="#">My Library</a></li>
     </ul>
   </div>
 </div>
