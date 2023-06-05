@@ -11,13 +11,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  background-image: url(/src/images/children-mob.jpg);
+  background-image: url(../images/children-mob.jpg);
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     & {
-      background-image: url(/src/images/children-mob-2x.jpg);
+      background-image: url(../images/children-mob-2x.jpg);
     }
   }
   background-size: cover;
@@ -59,13 +59,13 @@
     );
   }
   .hero-getstart__section {
-    background-image: url(/src/images/children-tab.jpg);
+    background-image: url(../images/children-tab.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       & {
-        background-image: url(/src/images/children-tab-2x.jpg);
+        background-image: url(../images/children-tab-2x.jpg);
       }
     }
     background-size: cover;
@@ -104,13 +104,13 @@
     );
   }
   .hero-getstart__section {
-    background-image: url(/src/images/children.jpg);
+    background-image: url(../images/children.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       & {
-        background-image: url(/src/images/children-2x.jpg);
+        background-image: url(../images/children-2x.jpg);
       }
     }
     background-size: cover;
