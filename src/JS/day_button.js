@@ -5,6 +5,7 @@ const body = document.querySelector('body');
 const firstSvgLine = switchDayBtn.querySelector('.first');
 const secondSvgLine = switchDayBtn.querySelector('.second');
 const globalSearchBtn = document.querySelector('.global-search-btn');
+const modalWindow = document.querySelector('.modal-window');
 
 let screenWidth = window.innerWidth;
 
@@ -24,6 +25,7 @@ switchDayBtn.addEventListener('click', ({ currentTarget }) => {
   if (removeBtn !== null) removeBtn.classList.toggle('day');
   if (addBtn !== null) addBtn.classList.toggle('day');
   if (globalSearchBtn !== null) globalSearchBtn.classList.toggle('day');
+  if (modalWindow !== null) modalWindow.classList.toggle('day');
   currentTarget.classList.toggle('day');
 
   if (currentTarget.classList.contains('day')) {

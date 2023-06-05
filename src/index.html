@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinemania | Your full Movie Library</title>
+    <title>Cinemania | Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
@@ -22,12 +22,19 @@
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/header.html"></include>
-    <include src="./partials/home.html"></include>
-    <include src="./partials/catalog.html"></include>
-    <include src="./partials/mylibrary.html"></include>
+    <header>
+      <include src="./partials/header.html"></include>
+    </header>
+    <main>
+      <include src="./partials/hero.html"></include>
+    </main>
+
+    <footer class="footer">
+      <include src="./partials/footer.html"></include>
+    </footer>
+
     <include src="./partials/modal-oops.html"></include>
-    <include src="./partials/footer.html"></include>
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
