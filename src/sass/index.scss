@@ -3,14 +3,13 @@
 @import './home';
 @import './fonts';
 @import './reset';
-@import './modal-oops.scss';
+@import './modal-oops';
 @import './button';
 @import './modal';
 @import './my-library';
-@import './footer.scss';
-@import './modal-team.scss';
-@import './hero-getstart.scss';
-
+@import './footer';
+@import './modal-team';
+@import './hero-getstart';
 
 :root {
   --accent: #f87719;
@@ -65,4 +64,3 @@ body {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
