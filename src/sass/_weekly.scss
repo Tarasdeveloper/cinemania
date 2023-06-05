@@ -1,0 +1,294 @@
+body {
+  &.is-light-mode {
+    background-color: var(--white);
+    .section-about-weekly-trends {
+      .weekly-trends-title {
+        color: var(--black-bg);
+      }
+    }
+  }
+}
+
+.weekly-trends-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.weekly-trends-title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.weekly-trends-see-all-link {
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.weekly-trends-see-all-link:hover,
+.weekly-trends-see-all-link:focus {
+  text-decoration: underline;
+}
+
+.weekly-trends-movie-card {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.weekly-trends-movie-card:hover,
+.weekly-trends-movie-card:focus {
+  box-shadow: var(--box-shadow);
+}
+
+.weekly-trends-movie-card img {
+  border-radius: 5px;
+}
+
+.weekly-trends-movie-card::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--bg-card-film);
+}
+
+.weekly-trends-movie-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.weekly-trends-movie-title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.weekly-trends-movie-genres {
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: var(--light-gray);
+}
+
+.weekly-trends-rating {
+  display: flex;
+  align-items: flex-end;
+  font-size: 40px;
+  line-height: 0.75;
+}
+
+.weekly-trends-rating-body {
+  position: relative;
+}
+
+.weekly-trends-rating-body::before {
+  content: '★★★★★';
+  letter-spacing: 4px;
+  display: block;
+}
+
+.weekly-trends-rating-active {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.weekly-trends-rating-active::before {
+  content: '★★★★★';
+  position: absolute;
+  letter-spacing: 4px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: var(--accent);
+}
+
+.weekly-trends-rating-items {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.weekly-trends-rating-item {
+  flex: 0 0 20%;
+  height: 100%;
+  opacity: 0;
+}
+
+@media screen and (min-width: 320px) {
+  /* ------------------------WEEKLY TRENDS-------------------------- */
+  .weekly-trends-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .weekly-trends-title {
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .weekly-trends-see-all-link {
+    font-size: 16px;
+    line-height: 1.19;
+  }
+
+  .weekly-trends-movie-card:nth-child(n + 2) {
+    display: none;
+  }
+
+  .weekly-trends-movies-container {
+    margin-top: 24px;
+  }
+
+  .weekly-trends-movie-info {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 16px;
+  }
+
+  .weekly-trends-movie-title {
+    font-size: 12px;
+    line-height: 1.67;
+  }
+
+  .weekly-trends-movie-genres {
+    font-size: 12px;
+    line-height: 1.67;
+  }
+
+  .weekly-trends-rating-body::before {
+    font-size: 14px;
+  }
+
+  .weekly-trends-rating-active::before {
+    font-size: 14px;
+  }
+}
+/* ------------------------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  /* ------------------------WEEKLY TRENDS-------------------------- */
+  .weekly-trends-container {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 52px;
+    padding-bottom: 44px;
+  }
+
+  .weekly-trends-title {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+
+  .weekly-trends-see-all-link {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+
+  .weekly-trends-movie-card {
+    display: none;
+  }
+
+  .weekly-trends-movie-card:nth-child(-n + 3) {
+    display: block;
+  }
+
+  .weekly-trends-movies-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  .weekly-trends-movie-info {
+    padding-bottom: 12px;
+  }
+
+  .weekly-trends-movie-title {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .weekly-trends-movie-genres {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .weekly-trends-rating-body::before {
+    font-size: 10px;
+  }
+
+  .weekly-trends-rating-active::before {
+    font-size: 10px;
+  }
+}
+/* ------------------------------------------------------------------ */
+
+@media screen and (min-width: 1246px) {
+  /* ------------------------WEEKLY TRENDS-------------------------- */
+  .weekly-trends-container {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .weekly-trends-title {
+    font-size: 28px;
+    line-height: 1.18;
+  }
+
+  .weekly-trends-see-all-link {
+    font-size: 28px;
+    line-height: 1.18;
+  }
+
+  .weekly-trends-movies-container {
+    gap: 15px;
+    margin-top: 28px;
+  }
+
+  .weekly-trends-movie-info {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+  .weekly-trends-movie-title {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  .weekly-trends-movie-genres {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  .weekly-trends-rating-body::before {
+    font-size: 18px;
+  }
+
+  .weekly-trends-rating-active::before {
+    font-size: 18px;
+  }
+  /* ------------------------------------------------------------------- */
+}
