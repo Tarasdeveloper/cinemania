@@ -1,14 +1,18 @@
 @import './common';
+@import './header';
 @import './home';
 @import './fonts';
 @import './reset';
 @import './modal-oops.scss';
 @import './button';
+@import './modal';
 @import './my-library';
-@import './hero-getstart.scss';
+@import './footer.scss';
+@import './modal-team';
 
 :root {
   --accent: #f87719;
+  --bg-mob-menu: #171717;
   --black-bg: #111111;
   --dark: #282828;
   --gray: #595959;
@@ -22,7 +26,11 @@
     rgba(248, 159, 25, 0.68) 91.91%
   );
   --transit: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  //   --box-shadow: 1px 1px 14px rgba(1, 1, 1, 0.25);
+  --linear-cinema: linear-gradient(
+    83.48deg,
+    #0e0e0e 25.78%,
+    rgba(14, 14, 14, 0) 60.07%
+  );
 }
 
 body {
@@ -32,12 +40,15 @@ body {
   font-weight: 400;
   color: var(--light-text);
   background-color: var(--black-bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   max-width: 1246px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .hidden {

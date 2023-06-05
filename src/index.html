@@ -21,17 +21,20 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <header></header>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="./partials/home.html"></include> -->
-    <main>
+    <header>
+      <include src="./partials/header.html"></include>
+    </header>
+
+    <main class="main">
       <include src="./partials/hero.html"></include>
     </main>
 
-    <footer>
+    <footer class="footer">
       <include src="./partials/footer.html"></include>
     </footer>
 
+    <include src="./partials/modal-team.html"></include>
     <include src="./partials/modal-oops.html"></include>
 
     <include src="./partials/hero-getstart.html"></include>

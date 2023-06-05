@@ -5,14 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinemania | My library</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <header></header>
-    <main>
-      <include src="./partials/mylibrary.html"></include>
+    <header>
+      <include src="./partials/header.html"></include>
+    </header>
+
+    <main class="main">
+      <include src="./partials/my-library-list.html"></include>
     </main>
-    <footer>
+
+    <footer class="footer">
       <include src="./partials/footer.html"></include>
     </footer>
+
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
