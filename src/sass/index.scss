@@ -10,11 +10,9 @@
 @import './footer.scss';
 @import './modal-team';
 
-
-
 :root {
   --accent: #f87719;
-  --bg-mob-menu:#171717;
+  --bg-mob-menu: #171717;
   --black-bg: #111111;
   --dark: #282828;
   --gray: #595959;
@@ -42,6 +40,8 @@ body {
   font-weight: 400;
   color: var(--light-text);
   background-color: var(--black-bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
