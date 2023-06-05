@@ -5,4 +5,3 @@ import './JS/modal-menu';
 import './JS/hero';
 import './JS/teamModal';
 import './JS/team';
-import './JS/hero-getstart'
