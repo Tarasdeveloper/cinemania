@@ -46,4 +46,4 @@
   `;eQ.innerHTML=n}(e);let r=document.getElementById("trailer-btn");r.addEventListener("click",async()=>{try{let t=await eW(e.id),r=t.find(t=>"Official Trailer"===t.name);if(!r)throw Error("Trailer is not found");let n=r.key,i=eK.create(`<iframe class="iframe" src="https://www.youtube.com/embed/${n}" width="560" height="315" frameborder="0"></iframe>`);i.show(()=>console.log("lightbox now visible"))}catch(e){let t=eK.create(`<div class="notification-trailer-fail">
            
           </div>`);t.show(()=>console.log("lightbox now visible"))}})}catch(t){console.log(t)}}()}();
-//# sourceMappingURL=index.dc92c879.js.map
+//# sourceMappingURL=catalog.5137bc94.js.map
