@@ -6,6 +6,18 @@
 
 //! Стилі для мобайл
 @media screen and (min-width: 320px) {
+    .modal-pop-up-backdrop {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(46, 47, 66, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            transition: display var(--transit);
+        }
     .modal-window {
             width: 280px;
             background: var(--black-bg);
