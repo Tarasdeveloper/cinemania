@@ -17,7 +17,7 @@
             font-family: 'Roboto';
             font-weight: 500;
             font-size: 12px;  
-            line-height: 14px;
+            line-height: 1.16;
             color: var(--black-bg);
             transition: color var(--transit);
             position: relative;
@@ -84,7 +84,7 @@
         font-family: 'Roboto';
         font-weight: 500;
         font-size: 12px;
-        line-height: 14px;
+        line-height: 1.16;
         color: var(--white);
         transition: color var(--transit);
         position: relative;
@@ -333,18 +333,18 @@
     .remind-btn, 
     .orange-add-btn {
         font-size: 14px;
-        line-height: 16px;
+        line-height: 1.14;
     }
 
     .get-started-btn, .more-details-btn {
         font-size: 14px;
-        line-height: 20px;
+        line-height: 1.43;
         padding-top: 9px;
         padding-bottom: 9px;
     }
 
     .remove-btn, .add-btn {
-        line-height: 16px;
+        line-height: 1.33;
     }    
     
     .switch {
@@ -400,12 +400,12 @@
     .search-btn
     {
         font-size: 18px;
-        line-height: 28px;
+        line-height: 1.55;
     }
 
     .trailer-btn {
         font-size: 16px;
-        line-height: 24px;
+        line-height: 1.5;
     } 
     
      .global-search-btn {
@@ -416,7 +416,7 @@
     
     .get-started-btn, .more-details-btn {
         font-size: 16px;
-        line-height: 24px;
+        line-height: 1.5;
         padding-top: 11px;
         padding-bottom: 11px;
     }

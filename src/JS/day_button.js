@@ -1,25 +1,33 @@
 const switchDayBtn = document.querySelector('button.switch');
-const removeBtn = document.querySelector('button.remove-btn');
-const addBtn = document.querySelector('button.add-btn');
-const body = document.querySelector('body');
 const firstSvgLine = switchDayBtn.querySelector('.first');
 const secondSvgLine = switchDayBtn.querySelector('.second');
+const body = document.querySelector('body');
+const removeBtn = document.querySelector('button.remove-btn');
+const addBtn = document.querySelector('button.add-btn');
 const globalSearchBtn = document.querySelector('.global-search-btn');
 const modalWindow = document.querySelector('.modal-window');
 
 let screenWidth = window.innerWidth;
 
-const screenWidthResizing = screenWidth => {
-  if (screenWidth >= 768) {
-    secondSvgLine.classList.remove('not-active');
-    firstSvgLine.classList.add('not-active');
+const svgSwitcher = (el, add) => {
+  if (add === true) {
+    return el.classList.add('not-active');
   } else {
-    secondSvgLine.classList.add('not-active');
-    firstSvgLine.classList.remove('not-active');
+    return el.classList.remove('not-active');
   }
 };
 
-screenWidthResizing(screenWidth);
+const svgSwitching = screenWidth => {
+  if (screenWidth >= 768) {
+    svgSwitcher(secondSvgLine, false);
+    svgSwitcher(firstSvgLine, true);
+  } else {
+    svgSwitcher(firstSvgLine, false);
+    svgSwitcher(secondSvgLine, true);
+  }
+};
+
+svgSwitching(screenWidth);
 
 switchDayBtn.addEventListener('click', ({ currentTarget }) => {
   if (removeBtn !== null) removeBtn.classList.toggle('day');
@@ -34,8 +42,7 @@ switchDayBtn.addEventListener('click', ({ currentTarget }) => {
     body.style.backgroundColor = '#111111';
   }
 });
-
 window.addEventListener('resize', () => {
   screenWidth = window.innerWidth;
-  screenWidthResizing(screenWidth);
+  svgSwitching(screenWidth);
 });
