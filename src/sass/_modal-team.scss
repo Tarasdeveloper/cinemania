@@ -60,14 +60,13 @@
 .team__title {
   padding-top: 13px;
   color: black;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 25px;
   margin-bottom: 15px;
-  text-shadow: 1px 1px 1px #ccc, 1px -1px 1px #ccc, -1px 1px 1px #ccc,
-    -1px -1px 1px #ccc;
+ 
   transition: all 1s;
   &:hover,
   &:focus {
