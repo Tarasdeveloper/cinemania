@@ -1,9 +1,3 @@
-//! Закоментувати перед пушем, налаштування для зручності при роботі із модалкою
-// .modal-window {
-//     margin: 15px auto;
-// }                  
-//! Закоментувати перед пушем, налаштування для зручності при роботі із модалкою
-
 //! Стилі для мобайл
 @media screen and (min-width: 320px) {
     .modal-pop-up-backdrop {
@@ -142,9 +136,11 @@
 
     }
 
-    .modal-window.day {
-        background: var(--white);
-        box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
+    body.is-light-mode {
+        .modal-window {
+            background: var(--white);
+            box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
+        }
 
         .modal-close-icon {
             stroke: var(--dark);
