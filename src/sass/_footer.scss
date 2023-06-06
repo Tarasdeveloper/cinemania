@@ -23,7 +23,7 @@
 }
 
 .footer__text {
-  color: var(--light-grey-color);
+  color: var(--grey-color);
   line-height: calc(16 / 14);
   letter-spacing: 0.3em;
 
@@ -35,7 +35,7 @@
 }
 
 .footer__sub {
-  color: var(--light-grey-color);
+  color: var(--grey-color);
   line-height: calc(16 / 14);
   letter-spacing: 0.03em;
   display: flex;
@@ -57,7 +57,7 @@
 .footer__link {
   padding-top: 10px;
   padding-bottom: 10px;
-  color: var(--light-grey-color);
+  color: var(--grey-color);
   line-height: calc(16 / 14);
   letter-spacing: 0.03em;
   cursor: pointer;
