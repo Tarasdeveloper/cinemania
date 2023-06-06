@@ -8,3 +8,4 @@ import './JS/hero';
 import './JS/teamModal';
 import './JS/team';
 import './JS/weekly';
+import './JS/catalog';

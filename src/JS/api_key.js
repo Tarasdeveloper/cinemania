@@ -1,4 +1,4 @@
 // ключ доступа к api = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MzllZTFhYzQ1ZTIyNDkxNDFiZDczODc5NmIzNzZhZCIsInN1YiI6IjY0NzlmOWQ4MGUyOWEyMDBkY2JhNDU2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5cnxdmXR0Xqh3NxZa1kiw8sVTmzkBxlAU9mk-u2Djxg
 
 const API_key = '839ee1ac45e2249141bd738796b376ad';
-export default API_key
+export default API_key;
