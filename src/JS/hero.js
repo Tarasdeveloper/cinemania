@@ -5,7 +5,7 @@ import { emptyStar, halfStar, fullStar } from './stars';
 const hero = document.querySelector('.hero');
 
 async function displayTrendingMovie() {
-  try {
+    try {
     const { results } = await getDayTrending(1);
     const movieOfDay = results[Math.floor(Math.random() * results.length)];
 
@@ -13,7 +13,7 @@ async function displayTrendingMovie() {
 
     const trailerBtn = document.getElementById('trailer-btn');
     trailerBtn.addEventListener('click', async () => {
-      try {
+        try {
         const videos = await getVideos(movieOfDay.id);
         const infoTrailer = videos.find(el => el.name === 'Official Trailer');
 
@@ -27,10 +27,7 @@ async function displayTrendingMovie() {
         );
         instance.show(() => console.log('lightbox now visible'));
       } catch (error) {
-        const instance =
-          basicLightbox.create(`<div class="notification-trailer-fail">
-           
-          </div>`);
+        const instance = basicLightbox.create(`<div class="notification-trailer-fail"></div>`);
         instance.show(() => console.log('lightbox now visible'));
       }
     });
@@ -83,20 +80,30 @@ function createTrendingMarkup(movieOfDay) {
   }
   const markup = `
     <div class="hero-container">
+        <div class="hero-container__background">
+          <div class="hero-container__background-dark"></div>
+          <div class="hero-container__background-image" 
+            style="background-image: 
+            url(https://image.tmdb.org/t/p/original${
+              movieOfDay.backdrop_path
+            }" alt="Hero image" class="backend" loading="lazy");"> 
+          </div>
+        </div>
       <div class="hero-container__card">
-        <div class="hero-container__background-image">
-          <img src="https://image.tmdb.org/t/p/original${
-            movieOfDay.backdrop_path
-          }" alt="Hero image" class="backend" loading="lazy" />
-        </div>
-        <div class="hero-container__content">
-          <h1 class="title">${movieOfDay.title || movieOfDay.name}</h1>
-          <div class='start-rate__hero'>
-            ${ratingStars}
-          </div> 
-          <p class="description">${movieOfDay.overview}</p>
-          <button class="watch-trailer__btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
-        </div>
+          <div class="hero-container__content">
+            <div class="hero-container__content-box">
+              <h1 class="hero-container__title">${movieOfDay.title || movieOfDay.name}</h1>
+              <div class='start-rate__hero'>
+                ${ratingStars}
+              </div> 
+              <p class="hero-container__description">${movieOfDay.overview.slice(0, 108) + '...'}</p>
+              <div class="hero-container__btns">
+                <button class="trailer-btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
+                <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
+                <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   `;
