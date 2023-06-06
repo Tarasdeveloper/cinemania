@@ -11,7 +11,6 @@ const refs = {
     document.addEventListener('keydown', onEscapeClose);
     document.addEventListener('click', onBackdropClose);
     refs.teamModal[0].classList.add('openModalAnimationTeam');
-    // document.body.style.overflow = 'hidden';
   }
   function closeModalTeam(event) {
     refs.teamModal[0].classList.remove('closeModalAnimationTeam');
