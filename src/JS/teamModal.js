@@ -14,7 +14,7 @@ function openModalTeam(event) {
   document.addEventListener('click', onBackdropClose);
   refs.teamModal[0].classList.add('openModalAnimationTeam');
 
-  // Запретить прокрутку страницы
+  // Disable page scroll
   document.body.style.overflow = 'hidden';
 }
 
@@ -23,27 +23,18 @@ function closeModalTeam(event) {
   refs.teamBackdrop.classList.add('team__backdrop--hidden');
   document.removeEventListener('keydown', onEscapeClose);
 
-  // Восстановить прокрутку страницы
+  // Enable page scroll
   document.body.style.overflow = '';
 }
 
 function onEscapeClose(event) {
   if (event.code === 'Escape') {
-    refs.teamModal[0].classList.remove('openModalAnimationTeam');
-    refs.teamModal[0].classList.add('closeModalAnimationTeam');
-    setTimeout(() => {
-      closeModalTeam();
-    }, 400);
     closeModalTeam();
   }
 }
 
 function onBackdropClose(event) {
   if (event.target === refs.teamBackdrop) {
-    refs.teamModal[0].classList.remove('openModalAnimationTeam');
-    refs.teamModal[0].classList.add('closeModalAnimationTeam');
-    setTimeout(() => {
-      closeModalTeam();
-    }, 400);
+    closeModalTeam();
   }
 }
