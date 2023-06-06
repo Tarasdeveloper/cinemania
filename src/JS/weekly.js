@@ -52,7 +52,7 @@ function createFilmCardWeeklyTrends(movie, data) {
   if (movie.poster_path) {
     const posterUrlWeeklyTrends = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : '/src/images/coming_soon_default.jpg'; // шлях до вашої дефолтної картинки
+      : '/src/images/coming_soon_default.jpg'; // шлях до дефолтної картинки
 
     // const posterUrlWeeklyTrends = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const posterWeeklyTrends = document.createElement('img');
@@ -122,7 +122,6 @@ function createFilmCardWeeklyTrends(movie, data) {
     movieCardWeeklyTrends.appendChild(movieInfoWeeklyTrends);
 
     movieCardWeeklyTrends.addEventListener('click', function () {
-      openModal(movie, data);
       openModalPopUp(data.id);
     });
   }
@@ -152,13 +151,4 @@ function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
       yearFilmWeeklyTrends
     );
   }
-}
-
-function openModal(movie, data) {
-  // Виконати дії для відкриття модального вікна з детальною інформацією про фільм
-  // У цьому коді я просто виведу інформацію про фільм у консоль для прикладу:
-  console.log('Open Modal');
-  console.log('Movie Title:', movie.title);
-  console.log('Movie Genres:', getGenres(data.genres, data.release_date));
-  console.log('Movie Rating:', data.vote_average);
 }
