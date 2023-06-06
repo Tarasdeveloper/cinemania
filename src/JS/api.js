@@ -21,3 +21,17 @@ export async function getVideos(movie_id) {
     })
     .catch(error => {});
 }
+
+export const getSecondMovieById = async id => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_key}`
+    );
+    const result = {
+      ...data,
+    };
+    return result;
+  } catch (error) {
+    console.error('Smth wrong with api ID fetch' + error);
+  }
+};

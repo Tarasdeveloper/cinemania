@@ -1,34 +1,34 @@
 import API_key from './api_key';
 import axios from 'axios';
-export const LOCALSTORAGE = "library"
+export const LOCALSTORAGE = 'libraries';
 let currentID = 1;
 const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
   } catch (error) {
-    console.error("Set state error: ", error.message);
+    console.error('Set state error: ', error.message);
   }
 };
 
-const load = (key) => {
+const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
-    console.error("Get state error: ", error.message);
+    console.error('Get state error: ', error.message);
   }
 };
-function createTaskObject({ text}) {
+function createTaskObject({ text }) {
   return {
     text,
     id: currentID,
   };
 }
 export { save, load };
-  function addTaskToStorage(text) {
+function addTaskToStorage(text) {
   const currentState = load(LOCALSTORAGE);
-  console.log(currentState)
+  console.log(currentState);
   if (currentState === undefined) {
     save(LOCALSTORAGE, [createTaskObject({ text })]);
   } else {
@@ -41,10 +41,10 @@ export async function openModalPopUp(event) {
   const id = event;
   const data = await API(id);
   const code = await renderModal(data);
-  const addBtn = document.querySelector(".add-btn")
-  addBtn.addEventListener('click', sendToLocalStorage)
+  const addBtn = document.querySelector('.add-btn');
+  addBtn.addEventListener('click', sendToLocalStorage);
   function sendToLocalStorage() {
-    addTaskToStorage(id)
+    addTaskToStorage(id);
   }
 }
 
@@ -129,5 +129,3 @@ function renderModal({
     }
   }
 }
-
-
