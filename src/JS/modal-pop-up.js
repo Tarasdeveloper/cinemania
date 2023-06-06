@@ -1,7 +1,7 @@
 import API_key from './api_key';
 import axios from 'axios';
 export async function openModalPopUp(event) {
-  const id = event.target.dataset.source;
+  const id = event;
   const data = await API(id);
   const code = await renderModal(data);
 }
@@ -21,8 +21,8 @@ function renderModal({
   vote_count,
 }) {
   const modalPopUpBackdrop = document.querySelector('.modal-pop-up-backdrop');
-    modalPopUpBackdrop.innerHTML = " "
-    const poster =`https://image.tmdb.org/t/p/w500${poster_path}`
+  modalPopUpBackdrop.innerHTML = ' ';
+  const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const vote_averageNew = vote_average.toFixed(1);
   const popularityNew = popularity.toFixed(1);
   let genresNew = '';
