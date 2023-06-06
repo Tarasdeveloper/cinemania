@@ -1,12 +1,13 @@
+import API_key from './api_key';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
+import { openModalPopUp } from './modal-pop-up.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   fetchFilmsWeeklyTrends();
 });
 
 function fetchFilmsWeeklyTrends() {
-  const apiKeyWeeklyTrends = '839ee1ac45e2249141bd738796b376ad';
-  const trendingUrlWeeklyTrends = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKeyWeeklyTrends}`;
+  const trendingUrlWeeklyTrends = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_key}`;
 
   fetch(trendingUrlWeeklyTrends)
     .then(function (response) {
@@ -20,7 +21,7 @@ function fetchFilmsWeeklyTrends() {
 
       filmsWeeklyTrends.forEach(function (filmWeeklyTrends) {
         const filmIdWeeklyTrends = filmWeeklyTrends.id;
-        const filmUrlWeeklyTrends = `https://api.themoviedb.org/3/movie/${filmIdWeeklyTrends}?api_key=${apiKeyWeeklyTrends}`;
+        const filmUrlWeeklyTrends = `https://api.themoviedb.org/3/movie/${filmIdWeeklyTrends}?api_key=${API_key}`;
 
         fetch(filmUrlWeeklyTrends)
           .then(function (response) {
@@ -46,6 +47,7 @@ function fetchFilmsWeeklyTrends() {
 function createFilmCardWeeklyTrends(movie, data) {
   const movieCardWeeklyTrends = document.createElement('div');
   movieCardWeeklyTrends.className = 'weekly-trends-movie-card';
+  movieCardWeeklyTrends.dataset.id = data.id;
 
   if (movie.poster_path) {
     const posterUrlWeeklyTrends = movie.poster_path
@@ -110,32 +112,6 @@ function createFilmCardWeeklyTrends(movie, data) {
       showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
     }
 
-    // function showStarsRatingWeeklyTrends() {
-    //   let ratingActiveWeeklyTrends, ratingValueWeeklyTrends;
-    //   for (let index = 0; index < ratingsArrayWeeklyTrends.length; index++) {
-    //     const starRating = ratingsArrayWeeklyTrends[index];
-    //     showStarRatingWeeklyTrends(starRating);
-    //   }
-
-    //   function showStarRatingWeeklyTrends(rating) {
-    //     initRatingVarsWeeklyTrends(rating);
-
-    //     setRatingActiveWidthWeekly();
-    //   }
-
-    //   function initRatingVarsWeeklyTrends(rating) {
-    //     ratingActiveWeeklyTrends = rating.querySelector(
-    //       '.weekly-trends-rating-active'
-    //     );
-    //     ratingValueWeeklyTrends = data.vote_average;
-    //   }
-
-    //   function setRatingActiveWidthWeekly(index = ratingValueWeeklyTrends) {
-    //     const ratingActiveWidthWeeklyTrends = (index / 10) * 100;
-    //     ratingActiveWeeklyTrends.style.width = `${ratingActiveWidthWeeklyTrends}%`;
-    //   }
-    // }
-
     // Ініціалізування зіркового рейтингу RateYo
     // $(ratingElement).rateYo({
     //   rating: movieData.vote_average / 2, // Поділити рейтинг на 2, оскільки RateYo використовує шкалу від 0 до 5
@@ -147,6 +123,7 @@ function createFilmCardWeeklyTrends(movie, data) {
 
     movieCardWeeklyTrends.addEventListener('click', function () {
       openModal(movie, data);
+      openModalPopUp(data.id);
     });
   }
 
