@@ -9,3 +9,4 @@ import './JS/teamModal';
 import './JS/team';
 import './JS/weekly';
 import './JS/catalog';
+import './JS/library';
