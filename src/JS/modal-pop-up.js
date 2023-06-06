@@ -1,10 +1,53 @@
 import API_key from './api_key';
 import axios from 'axios';
+export const LOCALSTORAGE = "library"
+let currentID = 1;
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error("Set state error: ", error.message);
+  }
+};
+
+const load = (key) => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error("Get state error: ", error.message);
+  }
+};
+function createTaskObject({ text}) {
+  return {
+    text,
+    id: currentID,
+  };
+}
+export { save, load };
+  function addTaskToStorage(text) {
+  const currentState = load(LOCALSTORAGE);
+  console.log(currentState)
+  if (currentState === undefined) {
+    save(LOCALSTORAGE, [createTaskObject({ text })]);
+  } else {
+    currentState.push(createTaskObject({ text }));
+    save(LOCALSTORAGE, currentState);
+  }
+  currentID += 1;
+}
 export async function openModalPopUp(event) {
   const id = event;
   const data = await API(id);
   const code = await renderModal(data);
+  const addBtn = document.querySelector(".add-btn")
+  addBtn.addEventListener('click', sendToLocalStorage)
+  function sendToLocalStorage() {
+    addTaskToStorage(id)
+  }
 }
+
 async function API(el) {
   const base = await axios.get(
     `https://api.themoviedb.org/3/movie/${el}?api_key=${API_key}`
@@ -86,3 +129,5 @@ function renderModal({
     }
   }
 }
+
+
