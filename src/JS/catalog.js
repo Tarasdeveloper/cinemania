@@ -225,7 +225,9 @@ const options = {
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip  visually-hidden">...</a>',
   },
 };
-const pagination = new Pagination(container, options);
+
+let pagination;
+if (container) pagination = new Pagination(container, options);
 
 async function getTrendData(page) {
   try {
@@ -263,59 +265,65 @@ function search(event) {
 
   fetchMovieSearcher(query, searchPage).then(data => {
     moviesDataUpdate(data);
-    if (data.results.length < 1 || query === '') {
-      query = '';
-      saveSerialized('query-pg', query);
-      cards.innerHTML = '';
-      searchErrorMessage.classList.remove('hidden');
-      container.classList.add('hidden');
-      form.reset();
+
+    if (pagination) {
+      if (data.results.length < 1 || query === '') {
+        query = '';
+        saveSerialized('query-pg', query);
+        cards.innerHTML = '';
+        searchErrorMessage.classList.remove('hidden');
+        container.classList.add('hidden');
+        form.reset();
+      } else {
+        searchFilms = false;
+        totalItems = data.total_results;
+        pagination._options.totalItems = totalItems;
+
+        renderMarkupList(data);
+        searchErrorMessage.classList.add('hidden');
+        container.classList.remove('hidden');
+
+        form.reset();
+        pagination.reset();
+      }
+    }
+  });
+}
+if (pagination) {
+  pagination.on('afterMove', event => {
+    const currentPage = event.page;
+    if (searchFilms) {
+      getTrendData(currentPage).then(data => {
+        renderMarkupList(data), saveSerialized('moviesData', data.results);
+      });
     } else {
-      searchFilms = false;
-      totalItems = data.total_results;
-      pagination._options.totalItems = totalItems;
-
-      renderMarkupList(data);
-      searchErrorMessage.classList.add('hidden');
-      container.classList.remove('hidden');
-
-      form.reset();
-      pagination.reset();
+      fetchMovieSearcher(query, currentPage).then(data => {
+        moviesDataUpdate(data);
+        if (data.results.length < 1 || query === '') {
+          form.reset();
+          query = '';
+          saveSerialized('query-pg', query);
+        } else {
+          searchFilms = false;
+          renderMarkupList(data);
+          form.reset();
+        }
+      });
     }
   });
 }
 
-pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  if (searchFilms) {
-    getTrendData(currentPage).then(data => {
-      renderMarkupList(data), saveSerialized('moviesData', data.results);
+if (cards) {
+  cards.addEventListener('click', async evt => {
+    modal.classList.remove('is-hidden');
+    const id = evt.target.dataset.id;
+    const movie = await getDetailFilm(id);
+    closeButton.addEventListener('click', () => {
+      modal.classList.add('is-hidden');
+      modalPoster.innerHTML = '';
     });
-  } else {
-    fetchMovieSearcher(query, currentPage).then(data => {
-      moviesDataUpdate(data);
-      if (data.results.length < 1 || query === '') {
-        form.reset();
-        query = '';
-        saveSerialized('query-pg', query);
-      } else {
-        searchFilms = false;
-        renderMarkupList(data);
-        form.reset();
-      }
-    });
-  }
-});
-
-cards.addEventListener('click', async evt => {
-  modal.classList.remove('is-hidden');
-  const id = evt.target.dataset.id;
-  const movie = await getDetailFilm(id);
-  closeButton.addEventListener('click', () => {
-    modal.classList.add('is-hidden');
-    modalPoster.innerHTML = '';
   });
-});
+}
 
 async function getDetailFilm(movie_id) {
   const response = await axios.get(
