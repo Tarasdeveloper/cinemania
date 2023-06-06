@@ -100,7 +100,6 @@ function createTrendingMarkup(movieOfDay) {
               <div class="hero-container__btns">
                 <button class="trailer-btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
                 <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
-                <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
               </div>
             </div>
           </div>
