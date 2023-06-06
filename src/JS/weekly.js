@@ -1,3 +1,5 @@
+import { showStarsRatingWeeklyTrends } from './star-rating.js';
+
 window.addEventListener('DOMContentLoaded', function () {
   fetchFilmsWeeklyTrends();
 });
@@ -105,34 +107,34 @@ function createFilmCardWeeklyTrends(movie, data) {
       '.weekly-trends-rating'
     );
     if (ratingsArrayWeeklyTrends.length > 0) {
-      showStarsRatingWeeklyTrends();
+      showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
     }
 
-    function showStarsRatingWeeklyTrends() {
-      let ratingActiveWeeklyTrends, ratingValueWeeklyTrends;
-      for (let index = 0; index < ratingsArrayWeeklyTrends.length; index++) {
-        const starRating = ratingsArrayWeeklyTrends[index];
-        showStarRatingWeeklyTrends(starRating);
-      }
+    // function showStarsRatingWeeklyTrends() {
+    //   let ratingActiveWeeklyTrends, ratingValueWeeklyTrends;
+    //   for (let index = 0; index < ratingsArrayWeeklyTrends.length; index++) {
+    //     const starRating = ratingsArrayWeeklyTrends[index];
+    //     showStarRatingWeeklyTrends(starRating);
+    //   }
 
-      function showStarRatingWeeklyTrends(rating) {
-        initRatingVarsWeeklyTrends(rating);
+    //   function showStarRatingWeeklyTrends(rating) {
+    //     initRatingVarsWeeklyTrends(rating);
 
-        setRatingActiveWidthWeekly();
-      }
+    //     setRatingActiveWidthWeekly();
+    //   }
 
-      function initRatingVarsWeeklyTrends(rating) {
-        ratingActiveWeeklyTrends = rating.querySelector(
-          '.weekly-trends-rating-active'
-        );
-        ratingValueWeeklyTrends = data.vote_average;
-      }
+    //   function initRatingVarsWeeklyTrends(rating) {
+    //     ratingActiveWeeklyTrends = rating.querySelector(
+    //       '.weekly-trends-rating-active'
+    //     );
+    //     ratingValueWeeklyTrends = data.vote_average;
+    //   }
 
-      function setRatingActiveWidthWeekly(index = ratingValueWeeklyTrends) {
-        const ratingActiveWidthWeeklyTrends = (index / 10) * 100;
-        ratingActiveWeeklyTrends.style.width = `${ratingActiveWidthWeeklyTrends}%`;
-      }
-    }
+    //   function setRatingActiveWidthWeekly(index = ratingValueWeeklyTrends) {
+    //     const ratingActiveWidthWeeklyTrends = (index / 10) * 100;
+    //     ratingActiveWeeklyTrends.style.width = `${ratingActiveWidthWeeklyTrends}%`;
+    //   }
+    // }
 
     // Ініціалізування зіркового рейтингу RateYo
     // $(ratingElement).rateYo({
@@ -154,7 +156,7 @@ function createFilmCardWeeklyTrends(movie, data) {
 function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
   const yearFilmWeeklyTrends = releaseDateFilmWeeklyTrends
     ? releaseDateFilmWeeklyTrends.slice(0, 4) // Отримуємо рік з дати
-    : 'Not yet'; 
+    : 'Not yet';
 
   if (genresArrayFilmWeeklyTrends.length === 0) {
     return 'Not yet | ' + yearFilmWeeklyTrends;
