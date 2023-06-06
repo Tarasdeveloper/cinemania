@@ -1,0 +1,40 @@
+<section class="cards">
+  <h2 class="hidden" aria-label="film cards">Film cards</h2>
+  <div class="container container__catalog">
+    <div class="search__form--container">
+      <form class="search__form" id="search-form">
+        <div class="search__form--wrapper">
+          <input
+            class="search__form--input"
+            type="text"
+            name="search"
+            id="searchQuery"
+            placeholder="Search"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="global-search-btn">
+          <svg class="search-icon">
+            <use href="/src/images/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <ul class="cards__list films" id="cards__list"></ul>
+    <div class="cards__message hidden">
+      <p class="cards__text">
+        OOPS...<br />
+        We are very sorry!<br />
+        We don’t have any results due to your search.
+      </p>
+    </div>
+  </div>
+</section>
+<div id="tui-pagination-container" class="tui-pagination"></div>
+<div class="modal modal-weekly is-hidden">
+  <div class="modal-weekly__overlay">
+    <div class="modal-weekly__poster"></div>
+  </div>
+</div>
+  </div>
+</div>
