@@ -1,0 +1,346 @@
+//=================================Light mode styles=================================
+body {
+  &.is-light-mode {
+    background-color: var(--white);
+    .upcoming {
+      .upcoming-title {
+        color: var(--black-bg);
+      }
+
+      .upcoming-film-title {
+        color: var(--black-bg);
+      }
+
+      .upcoming-text {
+        color: var(--black-bg);
+      }
+
+      .upcoming-vote {
+        color: var(--dark);
+      }
+
+      .upcoming-average {
+        color: var(--dark);
+        background-color: var(--light-text);
+      }
+
+      .upcoming-count {
+        color: var(--dark);
+        background-color: var(--light-text);
+      }
+
+      .upcoming-pop {
+        color: var(--dark);
+      }
+
+      .upcoming-genre {
+        color: var(--dark);
+      }
+
+      .upcoming-film-about {
+        color: var(--black-bg);
+      }
+
+      .upcoming-film-description {
+        color: var(--dark);
+      }
+    }
+  }
+}
+//=================================Styles for home.html=================================
+
+.home-upcoming-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.upcoming-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.18;
+  text-transform: uppercase;
+  color: var(--light-text);
+
+  margin-bottom: 24px;
+}
+
+.home-upcoming-img {
+  width: 280px;
+  height: 402px;
+  overflow: hidden;
+}
+
+.upcoming-film-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.home-upcoming-right {
+  margin-top: 24px;
+}
+
+.upcoming-film-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--light-text);
+
+  margin-bottom: 20px;
+}
+
+.upcoming-description-left {
+  display: flex;
+  gap: 57px;
+}
+
+.upcoming-description-right {
+  display: flex;
+  gap: 57px;
+}
+
+.upcoming-text {
+  width: 85px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--light-gray);
+
+  margin-bottom: 12px;
+}
+
+.upcoming-date {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--accent);
+
+  margin-bottom: 12px;
+}
+
+.upcoming-vote {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--light-text);
+
+  margin-bottom: 12px;
+}
+
+.upcoming-average {
+  color: var(--black-bg);
+  background-color: var(--white);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-right: 5px;
+}
+
+.upcoming-count {
+  color: var(--black-bg);
+  background-color: var(--white);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-left: 5px;
+}
+
+.upcoming-pop {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--light-text);
+
+  margin-bottom: 12px;
+}
+
+.upcoming-genre {
+  width: 100px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.14;
+  color: var(--light-text);
+}
+
+.upcoming-film-about {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.18;
+  text-transform: uppercase;
+  color: var(--light-gray);
+
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.upcoming-film-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--light-text);
+
+  overflow: auto;
+  overflow-wrap: break-word;
+  max-height: 220px;
+
+  margin-bottom: 20px;
+}
+
+.upcoming-film-description::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+//=================================Mobile=================================
+
+@media screen and (min-width: 320px) {
+  .home-upcoming-container {
+    width: 320px;
+  }
+
+  .upcoming-description-right {
+    gap: 77px;
+  }
+
+  .upcoming-text {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .upcoming-date {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .upcoming-vote {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .upcoming-pop {
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .upcoming-genre {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .upcoming-film-description {
+    width: 280px;
+    max-height: 235px;
+  }
+}
+
+//=================================Tablet=================================
+
+@media screen and (min-width: 768px) {
+  .home-upcoming-container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 47px;
+  }
+
+  .home-upcoming-left {
+    margin-right: 0;
+  }
+
+  .upcoming-title {
+    font-size: 24px;
+    line-height: 1.16;
+  }
+
+  .home-upcoming-img {
+    width: 704px;
+    height: 400px;
+  }
+
+  .home-upcoming-right {
+    margin-top: 32px;
+  }
+
+  .upcoming-film-title {
+    font-size: 28px;
+    line-height: 1.17;
+
+    margin-bottom: 24px;
+  }
+
+  .home-upcoming-description {
+    display: flex;
+    gap: 130px;
+  }
+
+  .upcoming-description-left {
+    gap: 58px;
+  }
+
+  .upcoming-description-right {
+    gap: 78px;
+  }
+
+  .upcoming-genre {
+    font-size: 16px;
+  }
+
+  .upcoming-film-description {
+    width: 625px;
+    max-height: 100px;
+  }
+}
+
+//=================================Desktop=================================
+
+@media screen and (min-width: 1280px) {
+  .home-upcoming-container {
+    display: flex;
+    width: 1246px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 70px;
+    padding-top: 60px; //Delete before push
+  }
+
+  .home-upcoming-left {
+    margin-right: 16px;
+  }
+
+  .upcoming-title {
+    font-size: 28px;
+    line-height: 1.18;
+
+    margin-bottom: 28px;
+  }
+
+  .home-upcoming-img {
+    width: 805px;
+    height: 458px;
+  }
+
+  .home-upcoming-right {
+    margin-top: 0;
+    padding-top: 61px;
+  }
+
+  .upcoming-film-title {
+    font-size: 32px;
+    line-height: 1.18;
+
+    margin-bottom: 28px;
+  }
+
+  .home-upcoming-description {
+    display: block;
+    gap: 0;
+  }
+
+  .upcoming-film-description {
+    width: 390px;
+    max-height: 130px;
+  }
+}

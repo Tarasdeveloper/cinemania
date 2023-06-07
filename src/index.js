@@ -9,3 +9,5 @@ import './JS/team';
 import './JS/weekly';
 import './JS/catalog';
 import './JS/library';
+import './JS/currentpage';
+import './JS/upcoming';
