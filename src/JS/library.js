@@ -166,7 +166,7 @@ function renderMovies() {
 
   let movies = allMovies.slice(0, page * perPage);
 
-  const markup = createListMarkup(allMovies);
+  const markup = createListMarkup(movies);
 
   return markup;
 }
