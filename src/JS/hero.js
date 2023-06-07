@@ -48,7 +48,7 @@ async function displayTrendingMovie() {
 
 function createAndShowLightbox(keyTrailer) {
   const content = `<div class="video-container">
-    <button class="close-btn">Close</button>
+    <button class="close-btn">X</button>
     <iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>
   </div>`;
 
