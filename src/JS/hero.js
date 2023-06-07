@@ -63,6 +63,13 @@ function createAndShowLightbox(keyTrailer) {
     });
   });
 
+  window.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        console.log("hallo");
+        resetLightbox();
+      };
+    });
+
   document.getElementById('trailer-btn').disabled = true;
 }
 
