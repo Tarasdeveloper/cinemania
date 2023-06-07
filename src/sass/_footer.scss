@@ -59,9 +59,10 @@ body {
 }
 
 .footer__icon {
-  margin-left: 14px;
-  margin-right: 14px;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .footer__link {
