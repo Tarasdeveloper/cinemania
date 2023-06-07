@@ -197,3 +197,25 @@
   overflow: scroll;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.hero-container .weekly-trends-rating-body::before {
+  font-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
+
+.hero-container .weekly-trends-rating-active::before {
+  font-size: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
