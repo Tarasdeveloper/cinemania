@@ -34,7 +34,7 @@
   &:hover,
   &:focus {
     fill: #ff6b08;
-    transform: rotate(360deg);
+    /*transform: rotate(360deg);*/
   }
 }
 .team__modal {
@@ -66,7 +66,6 @@
   font-size: 20px;
   line-height: 25px;
   margin-bottom: 15px;
- 
   transition: all 1s;
   &:hover,
   &:focus {
@@ -125,7 +124,7 @@
   border: 2px;
   margin: auto;
   border-radius: 5px;
-  box-shadow: 0px 0px 3px 5px #ccc;
+  box-shadow: 0px 0px 3px 5px #d8d6d6;
 } 
 .team__name {
   font-size: 18px;
@@ -170,13 +169,7 @@
     height: 100%;
   }
 }
-.team__github {
-  &:hover,
-  &:focus {
-    fill: #ff6b08;
-    transition-duration: 0.5s;
-  }
-}
+
 .closeModalAnimationTeam {
   animation: closingTeam 0.4s linear none;
 }
