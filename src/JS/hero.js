@@ -1,7 +1,7 @@
 import { getDayTrending, getVideos } from './api';
 import * as basicLightbox from 'basiclightbox';
-import { emptyStar, halfStar, fullStar } from './stars';
 import { openModalPopUp } from './modal-pop-up.js';
+import { showStarsRatingWeeklyTrends } from './star-rating.js';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -76,47 +76,6 @@ function resetLightbox() {
 }
 
 function createTrendingMarkup(movieOfDay) {
-  let ratingStars = '';
-
-  const rating = Math.round(movieOfDay.vote_average);
-
-  switch (rating) {
-    case 0:
-      ratingStars = `${emptyStar.repeat(5)}`;
-      break;
-    case 1:
-      ratingStars = `${halfStar}${emptyStar.repeat(4)}`;
-      break;
-    case 2:
-      ratingStars = `${fullStar}${emptyStar.repeat(4)}`;
-      break;
-    case 3:
-      ratingStars = `${fullStar}${halfStar}${emptyStar.repeat(3)}`;
-      break;
-    case 4:
-      ratingStars = `${fullStar.repeat(2)}${emptyStar.repeat(3)}`;
-      break;
-    case 5:
-      ratingStars = `${fullStar.repeat(2)}${halfStar}${emptyStar.repeat(2)}`;
-      break;
-    case 6:
-      ratingStars = `${fullStar.repeat(3)}${emptyStar.repeat(2)}`;
-      break;
-    case 7:
-      ratingStars = `${fullStar.repeat(3)}${halfStar}${emptyStar}`;
-      break;
-    case 8:
-      ratingStars = `${fullStar.repeat(4)}${emptyStar}`;
-      break;
-    case 9:
-      ratingStars = `${fullStar.repeat(4)}${halfStar}`;
-      break;
-    case 10:
-      ratingStars = `${fullStar.repeat(5)}`;
-      break;
-    default:
-      throw new Error('Invalid rating');
-  }
   const markup = `
     <div class="hero-container">
         <div class="hero-container__background">
@@ -134,9 +93,44 @@ function createTrendingMarkup(movieOfDay) {
               <h1 class="hero-container__title">${
                 movieOfDay.title || movieOfDay.name
               }</h1>
-              <div class='start-rate__hero'>
-                ${ratingStars}
-              </div> 
+            <div class="weekly-trends-rating">
+        <div class="weekly-trends-rating-body">
+          <div class="weekly-trends-rating-active">
+            <div class="weekly-trends-rating-items">
+              <input
+                type="radio"
+                class="weekly-trends-rating-item"
+                value="1"
+                name="rating"
+              />
+              <input
+                type="radio"
+                class="weekly-trends-rating-item"
+                value="2"
+                name="rating"
+              />
+              <input
+                type="radio"
+                class="weekly-trends-rating-item"
+                value="3"
+                name="rating"
+              />
+              <input
+                type="radio"
+                class="weekly-trends-rating-item"
+                value="4"
+                name="rating"
+              />
+              <input
+                type="radio"
+                class="weekly-trends-rating-item"
+                value="5"
+                name="rating"
+              />
+            </div>
+          </div>
+        </div>
+      </div> 
               <p class="hero-container__description">${
                 movieOfDay.overview.slice(0, 108) + '...'
               }</p>
@@ -151,6 +145,12 @@ function createTrendingMarkup(movieOfDay) {
   `;
 
   hero.innerHTML = markup;
+  const ratingsArrayWeeklyTrends = document.querySelectorAll(
+    '.weekly-trends-rating'
+  );
+  if (ratingsArrayWeeklyTrends.length > 0) {
+    showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
+  }
 }
 
 displayTrendingMovie();
