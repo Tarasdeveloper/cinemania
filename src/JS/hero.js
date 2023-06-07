@@ -1,8 +1,8 @@
 import { getDayTrending, getVideos } from './api';
 import * as basicLightbox from 'basiclightbox';
 import { openModalPopUp } from './modal-pop-up.js';
-import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalOops } from './modal-oops';
+import { showStarsRatingWeeklyTrends } from './star-rating.js';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
