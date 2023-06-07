@@ -12,55 +12,59 @@ function createListMarkup(data) {
           poster_path,
           vote_average,
           id,
-          genre_names,
+          genres,
           release_date,
         }) => {
           let posterPath = ``;
           if (poster_path) {
-            posterPath = `${'https://api.themoviedb.org/3'}${`/w400`}${poster_path}`;
+            posterPath = `https://image.tmdb.org/t/p/w500${poster_path}`;
           }
+          let genresNew = '';
+  for (const genre of genres) {
+    genresNew += `${genre.name} `;
+  }
 
-          let ratingStars = '';
+          // let ratingStars = '';
 
-          const rating = Math.round(vote_average);
+          // const rating = Math.round(vote_average);
 
-          switch (rating) {
-            case 0:
-              ratingStars = `${emptyStar.repeat(5)}`;
-              break;
-            case 1:
-              ratingStars = `${halfStar}${emptyStar.repeat(4)}`;
-              break;
-            case 2:
-              ratingStars = `${fullStar}${emptyStar.repeat(4)}`;
-              break;
-            case 3:
-              ratingStars = `${fullStar}${halfStar}${emptyStar.repeat(3)}`;
-              break;
-            case 4:
-              ratingStars = `${fullStar.repeat(2)}${emptyStar.repeat(3)}`;
-              break;
-            case 5:
-              ratingStars = `${fullStar.repeat(2)}${halfStar}${emptyStar.repeat(
-                2
-              )}`;
-              break;
-            case 6:
-              ratingStars = `${fullStar.repeat(3)}${emptyStar.repeat(2)}`;
-              break;
-            case 7:
-              ratingStars = `${fullStar.repeat(3)}${halfStar}${emptyStar}`;
-              break;
-            case 8:
-              ratingStars = `${fullStar.repeat(4)}${emptyStar}`;
-              break;
-            case 9:
-              ratingStars = `${fullStar.repeat(4)}${halfStar}`;
-              break;
-            case 10:
-              ratingStars = `${fullStar.repeat(5)}`;
-              break;
-          }
+          // switch (rating) {
+          //   case 0:
+          //     ratingStars = `${emptyStar.repeat(5)}`;
+          //     break;
+          //   case 1:
+          //     ratingStars = `${halfStar}${emptyStar.repeat(4)}`;
+          //     break;
+          //   case 2:
+          //     ratingStars = `${fullStar}${emptyStar.repeat(4)}`;
+          //     break;
+          //   case 3:
+          //     ratingStars = `${fullStar}${halfStar}${emptyStar.repeat(3)}`;
+          //     break;
+          //   case 4:
+          //     ratingStars = `${fullStar.repeat(2)}${emptyStar.repeat(3)}`;
+          //     break;
+          //   case 5:
+          //     ratingStars = `${fullStar.repeat(2)}${halfStar}${emptyStar.repeat(
+          //       2
+          //     )}`;
+          //     break;
+          //   case 6:
+          //     ratingStars = `${fullStar.repeat(3)}${emptyStar.repeat(2)}`;
+          //     break;
+          //   case 7:
+          //     ratingStars = `${fullStar.repeat(3)}${halfStar}${emptyStar}`;
+          //     break;
+          //   case 8:
+          //     ratingStars = `${fullStar.repeat(4)}${emptyStar}`;
+          //     break;
+          //   case 9:
+          //     ratingStars = `${fullStar.repeat(4)}${halfStar}`;
+          //     break;
+          //   case 10:
+          //     ratingStars = `${fullStar.repeat(5)}`;
+          //     break;
+          // }
 
           return `<li class='cards-list__item hover-cursor' data-id='${id}'>
             <img
@@ -76,10 +80,10 @@ function createListMarkup(data) {
                 <h2 class='cards-list__title'>${original_title}</h2>
                 <div class='cards-list_second_line'>
                   <div class='cards-list__text'>
-                    <p>${genre_names} | ${release_date}</p>
+                    <p>${genresNew} | ${release_date}</p>
                 </div>
                 <div class='star-rate'>
-                ${ratingStars}
+                
               </div> 
               </div>
               </div>
