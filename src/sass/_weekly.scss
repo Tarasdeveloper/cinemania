@@ -9,6 +9,10 @@ body {
   }
 }
 
+.weekly-trends-container {
+  margin: 0 auto;
+}
+
 .weekly-trends-header {
   display: flex;
   justify-content: space-between;
@@ -31,6 +35,10 @@ body {
 .weekly-trends-see-all-link:hover,
 .weekly-trends-see-all-link:focus {
   text-decoration: underline;
+}
+
+.weekly-trends-movie-card:nth-child(n + 2) {
+  display: none;
 }
 
 .weekly-trends-movie-card {
@@ -137,6 +145,7 @@ body {
 @media screen and (min-width: 320px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
+    width: 320px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
@@ -151,10 +160,6 @@ body {
   .weekly-trends-see-all-link {
     font-size: 16px;
     line-height: 1.19;
-  }
-
-  .weekly-trends-movie-card:nth-child(n + 2) {
-    display: none;
   }
 
   .weekly-trends-movies-container {
@@ -190,6 +195,7 @@ body {
 @media screen and (min-width: 768px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
+    width: 768px;
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 52px;
@@ -243,11 +249,12 @@ body {
 }
 /* ------------------------------------------------------------------ */
 
-@media screen and (min-width: 1246px) {
+@media screen and (min-width: 1280px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 1246px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 80px;
     padding-bottom: 60px;
   }

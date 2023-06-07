@@ -1,42 +1,6 @@
 import API_key from './api_key';
 import axios from 'axios';
-export const LOCALSTORAGE = 'libraries';
-let currentID = 1;
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error('Set state error: ', error.message);
-  }
-};
 
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error('Get state error: ', error.message);
-  }
-};
-function createTaskObject({ text }) {
-  return {
-    text,
-    id: currentID,
-  };
-}
-export { save, load };
-function addTaskToStorage(text) {
-  const currentState = load(LOCALSTORAGE);
-  console.log(currentState);
-  if (currentState === undefined) {
-    save(LOCALSTORAGE, [createTaskObject({ text })]);
-  } else {
-    currentState.push(createTaskObject({ text }));
-    save(LOCALSTORAGE, currentState);
-  }
-  currentID += 1;
-}
 export async function openModalPopUp(event) {
   const id = event;
   const data = await API(id);
@@ -44,7 +8,7 @@ export async function openModalPopUp(event) {
   const addBtn = document.querySelector('.add-btn');
   addBtn.addEventListener('click', sendToLocalStorage);
   function sendToLocalStorage() {
-    addTaskToStorage(id);
+    addTaskToStorage(data);
   }
 }
 
@@ -128,4 +92,53 @@ function renderModal({
       document.removeEventListener('keydown', onEscPress, false);
     }
   }
+}
+// LOCAL STORAGE
+export const LOCALSTORAGE = 'addedMovies';
+let currentID = 1;
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
+
+const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+};
+function createTaskObject({ original_title,
+          poster_path,
+          vote_average,
+          id,
+          genre_names,genres,
+  release_date, }) {
+  console.log(poster_path)
+  return {
+    original_title,
+          poster_path,
+          vote_average,
+          id,
+          genre_names,
+    release_date,
+          genres
+  };
+}
+export { save, load };
+function addTaskToStorage(text) {
+  const currentState = load(LOCALSTORAGE);
+  console.log(currentState);
+  if (currentState === undefined) {
+    save(LOCALSTORAGE, [createTaskObject( text )]);
+  } else {
+    currentState.push(createTaskObject(text ));
+    save(LOCALSTORAGE, currentState);
+  }
+  currentID += 1;
 }
