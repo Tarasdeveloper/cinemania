@@ -16,18 +16,22 @@ async function displayTrendingMovie() {
         try {
         const videos = await getVideos(movieOfDay.id);
         const infoTrailer = videos.find(el => el.name === 'Official Trailer');
+          
 
         if (!infoTrailer) {
           throw new Error('Trailer is not found');
         }
 
         const keyTrailer = infoTrailer.key;
-        const instance = basicLightbox.create(
-          `<iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>`
-        );
-        instance.show(() => console.log('lightbox now visible'));
+          const instance = basicLightbox.create(
+            `<iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0" ></iframe>`
+          );
+          instance.show(() => console.log('lightbox now visible'));
+
+          trailerBtn.disabled = true;
+          
       } catch (error) {
-        const instance = basicLightbox.create(`<div class="notification-trailer-fail"></div>`);
+          const instance = basicLightbox.create(`<div class="notification-trailer-fail"></div>`);
         instance.show(() => console.log('lightbox now visible'));
       }
     });
