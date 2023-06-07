@@ -2,6 +2,7 @@
 body {
   &.is-light-mode {
     background-color: var(--white);
+
     .upcoming {
       .upcoming-title {
         color: var(--black-bg);
@@ -55,6 +56,7 @@ body {
     }
   }
 }
+
 //=================================Styles for home.html=================================
 
 .home-upcoming-container {
