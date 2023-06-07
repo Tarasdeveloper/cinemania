@@ -1,3 +1,19 @@
+body {
+  &.is-light-mode {
+    background-color: var(--white);
+    .modal-oops-section {
+      .modal-oops-card {
+        background-color: var(--white);
+      }
+      .modal-oops-title {
+        color: var(--black-bg);
+      }
+      .modal-oops-close-btn {
+        color: var(--black-bg);
+      }
+    }
+  }
+}
 .modal-oops-backdrop {
   position: fixed;
   top: 0;

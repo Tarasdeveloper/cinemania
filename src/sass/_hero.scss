@@ -160,9 +160,10 @@
 
 .close-btn {
   position: absolute;
-  top: 40px;
-  right: 50px;
-  z-index: 1;
+  top: 50%;
+  left: 80%;
+  transform: translate(-200%, 600%);
+  z-index: 999;
 }
 
 .iframe {
