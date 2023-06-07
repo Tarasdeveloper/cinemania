@@ -63,6 +63,13 @@ function createAndShowLightbox(keyTrailer) {
     });
   });
 
+  window.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        console.log("hallo");
+        resetLightbox();
+      };
+    });
+
   document.getElementById('trailer-btn').disabled = true;
 }
 
@@ -93,7 +100,7 @@ function createTrendingMarkup(movieOfDay) {
               <h1 class="hero-container__title">${
                 movieOfDay.title || movieOfDay.name
               }</h1>
-            <div class="weekly-trends-rating">
+      <div class="weekly-trends-rating">
         <div class="weekly-trends-rating-body">
           <div class="weekly-trends-rating-active">
             <div class="weekly-trends-rating-items">
