@@ -1,6 +1,7 @@
 import { getDayTrending, getVideos } from './api';
 import * as basicLightbox from 'basiclightbox';
 import { emptyStar, halfStar, fullStar } from './stars';
+import { openModalPopUp } from './modal-pop-up.js';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -35,6 +36,11 @@ async function displayTrendingMovie() {
         );
         instance.show(() => console.log('lightbox now visible'));
       }
+    });
+
+    const detailsBtn = document.getElementById('details-btn');
+    detailsBtn.addEventListener('click', () => {
+      openModalPopUp(movieOfDay.id);
     });
   } catch (error) {
     console.log(error);
