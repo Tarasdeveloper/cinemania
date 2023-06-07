@@ -144,13 +144,13 @@ function createTrendingMarkup(movieOfDay) {
     </div>
   `;
 
-  hero.innerHTML = markup;
   const ratingsArrayWeeklyTrends = document.querySelectorAll(
     '.weekly-trends-rating'
   );
   if (ratingsArrayWeeklyTrends.length > 0) {
     showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
   }
+  hero.innerHTML = markup;
 }
 
 displayTrendingMovie();
