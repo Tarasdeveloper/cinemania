@@ -1,6 +1,10 @@
 body {
+  
   &.is-open-menu {
-    overflow: hidden;
+    @media (max-width: 767px) {
+      overflow: hidden;
+    }
+    
   }
   &.is-light-mode {
     background-color: var(--white);
@@ -35,6 +39,7 @@ body {
 
 .header {
   font-family: 'Roboto';
+
   &__contener {
     display: flex;
     align-items: center;
@@ -51,6 +56,17 @@ body {
     justify-content: center;
     align-items: center;
     gap: 8px;
+  }
+
+  &__links{
+    display: block;
+    padding: 15px 0;
+    transition: color var(--transit);
+    
+    &:hover,
+    &:focus {
+        color: var(--accent);
+      }
   }
 
   &__nav {
@@ -123,13 +139,18 @@ body {
 }
 
 .backdrop {
-  position: absolute;
+  z-index: 999;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.2);
   font-family: 'Roboto';
+
+  @media (min-width: 768px) {
+      display: none;
+    }
 }
 
 .mob-menu {
@@ -141,7 +162,6 @@ body {
   height: 100%;
   margin-bottom: auto;
   padding: 8px 20px;
-  color: var(--white);
   background-color: var(--bg-mob-menu);
   border-radius: 0px 8px 8px 0px;
   transform: translateX(-164%);
@@ -149,6 +169,15 @@ body {
 
   &__link {
     margin-bottom: 40px;
+  }
+
+  &__links{
+    color: var(--white);
+
+    &:hover,
+    &:focus {
+      color: var(--accent);
+      }
   }
 
   &__nav {
