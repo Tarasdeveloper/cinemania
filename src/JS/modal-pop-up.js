@@ -1,15 +1,23 @@
 import API_key from './api_key';
 import axios from 'axios';
+import {
+  addMovieToLibrary,
+  removeMovieFromLibrary,
+  getMovieFromLibrary,
+  renderLibraryData,
+} from './library';
+const url = window.location.href;
+const LOCALSTORAGE = 'addedMovies';
 
 export async function openModalPopUp(event) {
   const id = event;
   const data = await API(id);
   const code = await renderModal(data);
-  const addBtn = document.querySelector('.add-btn');
-  addBtn.addEventListener('click', sendToLocalStorage);
-  function sendToLocalStorage() {
-    addTaskToStorage(data);
-  }
+  console.log(id)
+  // addBtn.addEventListener('click', sendToLocalStorage);
+  // function sendToLocalStorage() {
+  //   addTaskToStorage(data);
+  // }
 }
 
 async function API(el) {
@@ -26,6 +34,7 @@ function renderModal({
   genres,
   vote_average,
   vote_count,
+  id,
 }) {
   const modalPopUpBackdrop = document.querySelector('.modal-pop-up-backdrop');
   modalPopUpBackdrop.innerHTML = ' ';
@@ -63,12 +72,9 @@ function renderModal({
                 <p class="modal-about-description">
                     ${overview}
                 </p>
-                <button type="button" class="add-btn">Add to my library</button>
-                <button type="button" class="modal-close-button">
-                    <svg class="modal-close-icon">
-                        <use href="/src/images/sprite.svg#icon-close"></use>
-                    </svg>
-                </button>
+                <button type="button" class="add-btn"  id="add">Add to my library </button>   
+                <button type="button" class="add-btn hidden" id="remove">Remove from my library</button>
+                <button type="button" class="modal-close-button">X</button>
             </div>
         </div>`
   );
@@ -76,12 +82,14 @@ function renderModal({
   modalPopUpBackdrop.style.display = 'flex';
   modalCloseBtn.addEventListener('click', function () {
     modalPopUpBackdrop.style.display = 'none';
+
   });
   window.addEventListener('click', onPopUpBackdropClick);
   function onPopUpBackdropClick(event) {
     if (event.target == modalPopUpBackdrop) {
       modalPopUpBackdrop.style.display = 'none';
       window.removeEventListener('click', onEscPress, false);
+
     }
   }
   document.addEventListener('keydown', onEscPress);
@@ -90,55 +98,140 @@ function renderModal({
     if (event.code === ESC_KEYCODE) {
       modalPopUpBackdrop.style.display = 'none';
       document.removeEventListener('keydown', onEscPress, false);
+
     }
   }
-}
-// LOCAL STORAGE
-export const LOCALSTORAGE = 'addedMovies';
-let currentID = 1;
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error('Set state error: ', error.message);
+  //
+  const addBtn = document.querySelector('#add');
+  const removeBtn = document.querySelector('#remove')
+  function getAddedMovies() {
+    return JSON.parse(localStorage.getItem(LOCALSTORAGE));
   }
-};
+  function setAddedMovies(arr) {
+  localStorage.setItem(LOCALSTORAGE, JSON.stringify(arr));
+}
+  if (url.includes('library')) {
+    addBtn.classList.add('hidden');
+    removeBtn.classList.remove('hidden');
+  }
 
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error('Get state error: ', error.message);
+  //
+  let existing = getAddedMovies();
+  existing = existing ? existing : []; // Робить перевірку на данні в локал сторедж
+
+  //Якшо є даний фільм приховує кнопку «додати», показує «видалити»
+  if (existing.includes(id)) {
+    addBtn.classList.add('hidden');
+    removeBtn.classList.remove('hidden');
   }
-};
-function createTaskObject({ original_title,
-          poster_path,
-          vote_average,
-          id,
-          genre_names,genres,
-  release_date, }) {
-  console.log(poster_path)
-  return {
-    original_title,
-          poster_path,
-          vote_average,
-          id,
-          genre_names,
-    release_date,
-          genres
+
+  // SHOOSE DOM ELEMENTS
+  addBtn.addEventListener('click', onClickAdd);
+  removeBtn.addEventListener('click', onClickRemove);
+
+  // buttonAdd.classList.add('hidden');
+  // buttonRemove.classList.remove('hidden'); ------------------- тут завалився проект!
+  function onClickAdd() {
+    let existing = getAddedMovies();
+    existing = existing ? existing : [];
+
+    if (url.includes('library')) {
+      addBtn.classList.remove('hidden');
+      removeBtn.classList.add('hidden');
+    }
+
+    if (existing.includes(id)) {
+      addBtn.classList.add('hidden');
+      removeBtn.classList.remove('hidden');
+      return;
+    }
+
+    // Записує новий айді, відправляє данні в локал сторедж
+    existing.push(id);
+    setAddedMovies(existing);
+
+    addBtn.classList.add('hidden');
+    removeBtn.classList.remove('hidden');
+
+    //   Робить рендеринг картки, якшо знаходимося на сторінці library
+        if (url.includes('library')) {
+          getInfoMovie(id).then(film => {
+            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          });
+        }
+      }
+
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(id)) {
+          let index = existing.findIndex(id => id === id);
+
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          addBtn.classList.remove('hidden');
+          removeBtn.classList.add('hidden');
+        }
+
+        if (url.includes('library')) {
+          const libraryFilms = getAddedMovies() || [];
+          if (libraryFilms.length === 0) {
+            errorContainer.style.display = 'block';
+          }
+
+          removeFromPage(filmID);
+        }
+      }
+    //
+  // LOCAL STORAGE
+
+  let currentID = 1;
+  const save = (key, value) => {
+    try {
+      const serializedState = JSON.stringify(value);
+      localStorage.setItem(key, serializedState);
+    } catch (error) {
+      console.error('Set state error: ', error.message);
+    }
   };
-}
-export { save, load };
-function addTaskToStorage(text) {
-  const currentState = load(LOCALSTORAGE);
-  console.log(currentState);
-  if (currentState === undefined) {
-    save(LOCALSTORAGE, [createTaskObject( text )]);
-  } else {
-    currentState.push(createTaskObject(text ));
-    save(LOCALSTORAGE, currentState);
+
+  const load = key => {
+    try {
+      const serializedState = localStorage.getItem(key);
+      return serializedState === null ? undefined : JSON.parse(serializedState);
+    } catch (error) {
+      console.error('Get state error: ', error.message);
+    }
+  };
+  function createTaskObject({
+    original_title,
+    poster_path,
+    vote_average,
+    id,
+    genre_names,
+    genres,
+    release_date,
+  }) {
+    return {
+      original_title,
+      poster_path,
+      vote_average,
+      id,
+      genre_names,
+      release_date,
+      genres,
+    };
   }
-  currentID += 1;
+  function addTaskToStorage(text) {
+    const currentState = load(LOCALSTORAGE);
+    console.log(currentState);
+    if (currentState === undefined) {
+      save(LOCALSTORAGE, [createTaskObject(text)]);
+    } else {
+      currentState.push(createTaskObject(text));
+      save(LOCALSTORAGE, currentState);
+    }
+    currentID += 1;
+  }
 }
+// other
