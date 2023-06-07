@@ -2,14 +2,14 @@ body {
   &.is-light-mode {
     background-color: var(--white);
     .footer {
-      .footer__text {
-        color: var(--black-bg);
-      }
-      .footer__sub {
-        color: var(--black-bg);
-      }
+      .footer__text,
+      .footer__sub,
       .footer__link {
         color: var(--black-bg);
+      }
+      .footer__link:hover,
+      .footer__link:focus {
+        color: #ff6b08;
       }
     }
   }
@@ -23,10 +23,9 @@ body {
   padding-bottom: 29px;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   max-width: 490px;
   margin: 0 auto;
-  /*color: var(--grey-color);*/
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   @media screen and (min-width: 768px) {
     height: 79px;
     padding-top: 30px;
@@ -42,7 +41,8 @@ body {
   }
 }
 
-.footer__text {
+.footer__text,
+.footer__sub {
   color: var(--grey-color);
   line-height: calc(16 / 14);
   letter-spacing: 0.03em;
@@ -54,13 +54,6 @@ body {
 }
 
 .footer__sub {
-  color: var(--grey-color);
-  line-height: calc(16 / 14);
-  letter-spacing: 0.03em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: calc(19 / 16);
@@ -68,9 +61,10 @@ body {
 }
 
 .footer__icon {
-  margin-left: 14px;
-  margin-right: 14px;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .footer__link {
@@ -90,7 +84,6 @@ body {
   &.footer__link--underline {
     text-decoration: underline;
   }
-
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: calc(19 / 16);
