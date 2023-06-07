@@ -21,7 +21,9 @@ function toggleMenu () {
 
 function closeMenu(evt) {
     if (evt.target === mobileMenu || mobileMenu.contains(evt.target)) { 
-        return }
+    return
+  }
+  
     mobileMenu.classList.remove('is-open-menu');
     openMenuBtn.setAttribute('aria-expanded', false);
     toggleModal()
@@ -33,6 +35,10 @@ function closeMenu(evt) {
     if (!e.matches) return;
     mobileMenu.classList.remove('is-open-menu');
     openMenuBtn.setAttribute('aria-expanded', false);
+    document.body.classList.remove('is-open-menu');
+    if (!mobileMenu.classList.contains('is-open-menu')) {
+    backdrop.classList.add('hidden-menu');
+    }
   });
 
 
