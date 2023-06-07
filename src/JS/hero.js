@@ -3,9 +3,10 @@ import * as basicLightbox from 'basiclightbox';
 import { emptyStar, halfStar, fullStar } from './stars';
 
 const hero = document.querySelector('.hero');
+let lightboxInstance = null;
 
 async function displayTrendingMovie() {
-    try {
+  try {
     const { results } = await getDayTrending(1);
     const movieOfDay = results[Math.floor(Math.random() * results.length)];
 
@@ -13,31 +14,59 @@ async function displayTrendingMovie() {
 
     const trailerBtn = document.getElementById('trailer-btn');
     trailerBtn.addEventListener('click', async () => {
-        try {
+      try {
         const videos = await getVideos(movieOfDay.id);
         const infoTrailer = videos.find(el => el.name === 'Official Trailer');
-          
 
         if (!infoTrailer) {
           throw new Error('Trailer is not found');
         }
 
         const keyTrailer = infoTrailer.key;
-          const instance = basicLightbox.create(
-            `<iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0" ></iframe>`
-          );
-          instance.show(() => console.log('lightbox now visible'));
 
-          trailerBtn.disabled = true;
-          
+        if (lightboxInstance) {
+          lightboxInstance.close();
+        }
+
+        createAndShowLightbox(keyTrailer);
       } catch (error) {
-          const instance = basicLightbox.create(`<div class="notification-trailer-fail"></div>`);
+        const instance = basicLightbox.create(
+          `<div class="notification-trailer-fail"></div>`
+        );
         instance.show(() => console.log('lightbox now visible'));
       }
     });
   } catch (error) {
     console.log(error);
   }
+}
+
+function createAndShowLightbox(keyTrailer) {
+  const content = `<div class="video-container">
+    <button class="close-btn">Close</button>
+    <iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>
+  </div>`;
+
+  lightboxInstance = basicLightbox.create(content);
+
+  lightboxInstance.show(() => {
+    console.log('lightbox now visible');
+    const closeBtn = lightboxInstance.element().querySelector('.close-btn');
+    closeBtn.addEventListener('click', () => {
+      resetLightbox();
+    });
+  });
+
+  document.getElementById('trailer-btn').disabled = true;
+}
+
+function resetLightbox() {
+  if (lightboxInstance) {
+    lightboxInstance.close();
+    lightboxInstance = null;
+  }
+
+  document.getElementById('trailer-btn').disabled = false;
 }
 
 function createTrendingMarkup(movieOfDay) {
@@ -96,11 +125,15 @@ function createTrendingMarkup(movieOfDay) {
       <div class="hero-container__card">
           <div class="hero-container__content">
             <div class="hero-container__content-box">
-              <h1 class="hero-container__title">${movieOfDay.title || movieOfDay.name}</h1>
+              <h1 class="hero-container__title">${
+                movieOfDay.title || movieOfDay.name
+              }</h1>
               <div class='start-rate__hero'>
                 ${ratingStars}
               </div> 
-              <p class="hero-container__description">${movieOfDay.overview.slice(0, 108) + '...'}</p>
+              <p class="hero-container__description">${
+                movieOfDay.overview.slice(0, 108) + '...'
+              }</p>
               <div class="hero-container__btns">
                 <button class="trailer-btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
                 <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
