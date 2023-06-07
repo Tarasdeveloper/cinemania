@@ -117,6 +117,8 @@
         line-height: 1.66;
         color: var(--light-text);
         margin-bottom: 16px;
+        max-height: 180px;
+        overflow-y: scroll;
     }
 
     .modal-close-button {
@@ -211,6 +213,7 @@
     }
     
     .modal-about-description {
+        max-height: 140px;
         margin-bottom: 24px;
     }
     
@@ -263,6 +266,7 @@
     .modal-about-description {
         font-size: 14px;
         line-height: 1.43;
+        max-height: 160px;
     }
     
     .modal-close-button {
