@@ -3,7 +3,13 @@ import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalPopUp } from './modal-pop-up.js';
 
 window.addEventListener('DOMContentLoaded', function () {
-  fetchFilmsWeeklyTrends();
+  const filmsContainerWeeklyTrends = document.getElementById(
+    'weekly-trends-movies-container'
+  );
+
+  if (filmsContainerWeeklyTrends) {
+    fetchFilmsWeeklyTrends();
+  }
 });
 
 function fetchFilmsWeeklyTrends() {

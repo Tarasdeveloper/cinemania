@@ -13,7 +13,6 @@ function openModalTeam(event) {
   document.addEventListener('keydown', onEscapeClose);
   document.addEventListener('click', onBackdropClose);
   refs.teamModal[0].classList.add('openModalAnimationTeam');
-
   // Disable page scroll
   document.body.style.overflow = 'hidden';
 }
@@ -22,7 +21,6 @@ function closeModalTeam(event) {
   refs.teamModal[0].classList.remove('closeModalAnimationTeam');
   refs.teamBackdrop.classList.add('team__backdrop--hidden');
   document.removeEventListener('keydown', onEscapeClose);
-
   // Enable page scroll
   document.body.style.overflow = '';
 }

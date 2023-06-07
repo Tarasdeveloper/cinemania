@@ -2,6 +2,7 @@ import { getDayTrending, getVideos } from './api';
 import * as basicLightbox from 'basiclightbox';
 import { openModalPopUp } from './modal-pop-up.js';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
+import { openModalOops } from './modal-oops';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -31,10 +32,7 @@ async function displayTrendingMovie() {
 
         createAndShowLightbox(keyTrailer);
       } catch (error) {
-        const instance = basicLightbox.create(
-          `<div class="notification-trailer-fail"></div>`
-        );
-        instance.show(() => console.log('lightbox now visible'));
+        openModalOops();
       }
     });
 
@@ -44,6 +42,7 @@ async function displayTrendingMovie() {
     });
   } catch (error) {
     console.log(error);
+    openModalOops();
   }
 }
 
@@ -61,6 +60,13 @@ function createAndShowLightbox(keyTrailer) {
     closeBtn.addEventListener('click', () => {
       resetLightbox();
     });
+  });
+
+  window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      console.log('hallo');
+      resetLightbox();
+    }
   });
 
   document.getElementById('trailer-btn').disabled = true;
@@ -93,7 +99,7 @@ function createTrendingMarkup(movieOfDay) {
               <h1 class="hero-container__title">${
                 movieOfDay.title || movieOfDay.name
               }</h1>
-            <div class="weekly-trends-rating">
+      <div class="weekly-trends-rating">
         <div class="weekly-trends-rating-body">
           <div class="weekly-trends-rating-active">
             <div class="weekly-trends-rating-items">

@@ -2,6 +2,7 @@
 body {
   &.is-light-mode {
     background-color: var(--white);
+
     .upcoming {
       .upcoming-title {
         color: var(--black-bg);
@@ -44,9 +45,18 @@ body {
       .upcoming-film-description {
         color: var(--dark);
       }
+
+      .upcoming-oops-title {
+        color: var(--black-bg);
+      }
+
+      .upcoming-oops {
+        color: var(--black-bg);
+      }
     }
   }
 }
+
 //=================================Styles for home.html=================================
 
 .home-upcoming-container {
@@ -140,6 +150,14 @@ body {
   margin-right: 5px;
 }
 
+.upcoming-average-night {
+  color: var(--dark);
+  background-color: var(--light-text);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-right: 5px;
+}
+
 .upcoming-count {
   color: var(--black-bg);
   background-color: var(--white);
@@ -193,6 +211,34 @@ body {
   width: 0.5em;
 }
 
+.upcoming-oops-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.upcoming-oops-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.18;
+  text-transform: uppercase;
+  color: var(--light-text);
+
+  margin-bottom: 24px;
+}
+
+.upcoming-oops {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--white);
+  padding-top: 24px;
+  padding-bottom: 10px;
+}
+
 //=================================Mobile=================================
 
 @media screen and (min-width: 320px) {
@@ -234,6 +280,10 @@ body {
     width: 280px;
     max-height: 235px;
   }
+
+  .upcoming-oops-container {
+    width: 320px;
+  }
 }
 
 //=================================Tablet=================================
@@ -244,10 +294,6 @@ body {
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 47px;
-  }
-
-  .home-upcoming-left {
-    margin-right: 0;
   }
 
   .upcoming-title {
@@ -292,6 +338,25 @@ body {
     width: 625px;
     max-height: 100px;
   }
+
+  .upcoming-oops-container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 47px;
+  }
+
+  .upcoming-oops-title {
+    font-size: 24px;
+    line-height: 1.16;
+  }
+
+  .upcoming-oops {
+    font-size: 24px;
+    line-height: 1.33;
+    padding-top: 56px;
+    padding-bottom: 30px;
+  }
 }
 
 //=================================Desktop=================================
@@ -303,7 +368,6 @@ body {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 70px;
-    padding-top: 60px; //Delete before push
   }
 
   .home-upcoming-left {
@@ -342,5 +406,26 @@ body {
   .upcoming-film-description {
     width: 390px;
     max-height: 130px;
+  }
+
+  .upcoming-oops-container {
+    width: 1246px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 70px;
+  }
+
+  .upcoming-oops-title {
+    font-size: 28px;
+    line-height: 1.18;
+
+    margin-bottom: 28px;
+  }
+
+  .upcoming-oops {
+    font-size: 32px;
+    line-height: 1.12;
+    padding-top: 92px;
+    padding-bottom: 70px;
   }
 }
