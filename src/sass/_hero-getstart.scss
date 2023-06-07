@@ -36,15 +36,18 @@
 
 .hero-getstart__text {
   max-width: 166px;
+  max-height: 80px;
   margin-top: 8px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
+  overflow-y: auto;
 }
 
 .get-started-btn {
+  display: inline-block;
   margin-top: 20px;
 }
 
@@ -90,6 +93,9 @@
     font-size: 14px;
     line-height: 1.14;
     color: var(--light-text);
+  }
+  .get-started-btn {
+    margin-top: 32px;
   }
 }
 

@@ -3,14 +3,17 @@
 @import './home';
 @import './fonts';
 @import './reset';
-@import './modal-oops.scss';
+@import './modal-oops';
 @import './button';
 @import './modal';
 @import './my-library';
-@import './footer.scss';
-@import './modal-team.scss';
-@import './hero-getstart.scss';
-
+@import './footer';
+@import './modal-team';
+@import './hero-getstart';
+@import './weekly';
+@import './catalog';
+@import './hero';
+@import './upcoming';
 
 :root {
   --accent: #f87719;
@@ -32,6 +35,12 @@
     83.48deg,
     #0e0e0e 25.78%,
     rgba(14, 14, 14, 0) 60.07%
+  );
+  --box-shadow: 1px 1px 24px 2px rgba(1, 1, 1, 0.45);
+  --bg-card-film: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
   );
 }
 
@@ -66,3 +75,23 @@ body {
   overflow: hidden;
 }
 
+#scrollUpButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#scrollUpButton:before {
+  content: '\2191';
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+}

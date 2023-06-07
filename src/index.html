@@ -2,6 +2,24 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./public/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./public/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./public/favicon-16x16.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinemania | Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,13 +29,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <meta name="description" content="Cinemania - Catalog your movie library" />
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="../src/images/favicon/icon.ico"
-      sizes="32x32"
-      type="image/x-icon"
-    />
+
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
@@ -29,6 +41,9 @@
     <main class="main">
       <include src="./partials/hero.html"></include>
       <include src="./partials/hero-getstart.html"></include>
+      <include src="./partials/weekly.html"></include>
+      <include src="./partials/upcoming.html"></include>
+      <button id="scrollUpButton" title="Scroll Up"></button>
     </main>
 
     <footer class="footer">
@@ -37,10 +52,8 @@
 
     <include src="./partials/modal-team.html"></include>
     <include src="./partials/modal-oops.html"></include>
-
-    
+    <include src="./partials/modal-pop-up.html"></include>
 
     <script type="module" src="./index.js"></script>
-
   </body>
 </html>

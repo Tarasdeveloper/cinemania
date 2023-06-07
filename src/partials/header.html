@@ -12,11 +12,9 @@
         </a>
 
         <button class="header__burger js-open-menu" type="button">Menu</button>
-        <ul class="header__menu">
+        <ul class="header__menu navigation" id="">
           <li>
-            <a
-              class="header__links js-header-links current-color"
-              href="./index.html"
+            <a class="header__links js-header-links" href="./index.html"
               >Home</a
             >
           </li>
@@ -61,27 +59,6 @@
             </linearGradient>
           </defs>
         </svg>
-        <svg class="icon-moon-line second" width="4" height="14" fill="none">
-          <path
-            stroke="url(#a)"
-            stroke-linecap="round"
-            stroke-width="1.2"
-            d="M1.1765 1.5742c2.879 3.0767 2.8681 8.0766-.0242 11.1676"
-          />
-          <defs>
-            <linearGradient
-              id="a"
-              x1="1.4182"
-              x2="5.2247"
-              y1="2.3722"
-              y2="3.2955"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#FFC226" />
-              <stop offset="1" stop-color="#F84119" />
-            </linearGradient>
-          </defs>
-        </svg>
         <svg class="icon-sun">
           <use href="/src/images/sprite.svg#icon-sun"></use>
         </svg>
@@ -93,15 +70,17 @@
 <div class="backdrop hidden-menu">
   <div class="mob-menu js-menu-container">
     <div class="mob-menu__link">
-      <a class="js-logo-links" href="#">
+      <a class="js-logo-links" href="./index.html">
         <img class="nav-logo" src="/src/images/logotyp.png" alt="Logo Cinema" />
       </a>
     </div>
 
-    <ul class="mob-menu__nav">
-      <li><a class="js-header-links current-color" href="#">Home</a></li>
-      <li><a class="js-header-links" href="#">Catalog</a></li>
-      <li><a class="js-header-links" href="#">My Library</a></li>
+    <ul class="mob-menu__nav navigation">
+      <li>
+        <a class="js-header-links" href="./index.html">Home</a>
+      </li>
+      <li><a class="js-header-links" href="./catalog.html">Catalog</a></li>
+      <li><a class="js-header-links" href="./mylibrary.html">My Library</a></li>
     </ul>
   </div>
 </div>
