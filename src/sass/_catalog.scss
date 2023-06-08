@@ -96,15 +96,18 @@ body {
   flex-direction: column;
   position: relative;
   height: 406px;
+  width: 280px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 10px;
   z-index: 0;
 
   @media screen and (min-width: 768px) {
+    width: 224px;
     height: 325px;
   }
 
   @media screen and (min-width: 1200px) {
+    width: 395px;
     height: 574px;
   }
 }
