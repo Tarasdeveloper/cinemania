@@ -44,14 +44,16 @@ async function displayUpcomingMovie() {
         let upcomingPosterPath;
         let upcomingImageUrl;
 
-        if (window.innerWidth <= 767) {
-          upcomingPosterPath = upcomingMovie.poster_path;
-          upcomingImageUrl = `https://image.tmdb.org/t/p/w500${upcomingPosterPath}`;
-        } else {
-          upcomingPosterPath = upcomingMovie.backdrop_path;
-          upcomingImageUrl = `https://image.tmdb.org/t/p/original/${upcomingPosterPath}`;
+        if (refs.upcomingMovieImg) {
+          if (window.innerWidth <= 767) {
+            upcomingPosterPath = upcomingMovie.poster_path;
+            upcomingImageUrl = `https://image.tmdb.org/t/p/w500${upcomingPosterPath}`;
+          } else {
+            upcomingPosterPath = upcomingMovie.backdrop_path;
+            upcomingImageUrl = `https://image.tmdb.org/t/p/original/${upcomingPosterPath}`;
+          }
+          refs.upcomingMovieImg.setAttribute('src', upcomingImageUrl);
         }
-        refs.upcomingMovieImg.setAttribute('src', upcomingImageUrl);
       }
 
       upcomingChancheImg();
@@ -160,5 +162,4 @@ async function displayUpcomingMovie() {
     }
   } catch (error) {}
 }
-
 displayUpcomingMovie();
