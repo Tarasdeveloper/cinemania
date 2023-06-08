@@ -2,7 +2,7 @@ import API_key from './api_key';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalPopUp } from './modal-pop-up.js';
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
   const filmsContainerWeeklyTrends = document.getElementById(
     'weekly-trends-movies-container'
   );
@@ -12,42 +12,40 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-function fetchFilmsWeeklyTrends() {
-  const trendingUrlWeeklyTrends = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_key}`;
+async function fetchFilmsWeeklyTrends() {
+  try {
+    const trendingUrlWeeklyTrends = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_key}`;
+    const response = await fetch(trendingUrlWeeklyTrends);
+    const data = await response.json();
+    const filmsWeeklyTrends = data.results;
+    const filmsContainerWeeklyTrends = document.getElementById(
+      'weekly-trends-movies-container'
+    );
 
-  fetch(trendingUrlWeeklyTrends)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      const filmsWeeklyTrends = data.results;
-      const filmsContainerWeeklyTrends = document.getElementById(
-        'weekly-trends-movies-container'
+    for (const filmWeeklyTrends of filmsWeeklyTrends) {
+      const filmIdWeeklyTrends = filmWeeklyTrends.id;
+      const filmUrlWeeklyTrends = `https://api.themoviedb.org/3/movie/${filmIdWeeklyTrends}?api_key=${API_key}`;
+      const filmResponse = await fetch(filmUrlWeeklyTrends);
+      const filmDataWeeklyTrends = await filmResponse.json();
+      const filmCardWeeklyTrends = createFilmCardWeeklyTrends(
+        filmWeeklyTrends,
+        filmDataWeeklyTrends
       );
+      filmsContainerWeeklyTrends.appendChild(filmCardWeeklyTrends);
 
-      filmsWeeklyTrends.forEach(function (filmWeeklyTrends) {
-        const filmIdWeeklyTrends = filmWeeklyTrends.id;
-        const filmUrlWeeklyTrends = `https://api.themoviedb.org/3/movie/${filmIdWeeklyTrends}?api_key=${API_key}`;
-
-        fetch(filmUrlWeeklyTrends)
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (filmDataWeeklyTrends) {
-            const filmCardWeeklyTrends = createFilmCardWeeklyTrends(
-              filmWeeklyTrends,
-              filmDataWeeklyTrends
-            );
-            filmsContainerWeeklyTrends.appendChild(filmCardWeeklyTrends);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      const ratingsArrayWeeklyTrends = filmCardWeeklyTrends.querySelectorAll(
+        '.weekly-trends-rating'
+      );
+      if (ratingsArrayWeeklyTrends.length > 0) {
+        showStarsRatingWeeklyTrends(
+          ratingsArrayWeeklyTrends,
+          filmDataWeeklyTrends
+        );
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function createFilmCardWeeklyTrends(movie, data) {
@@ -58,9 +56,7 @@ function createFilmCardWeeklyTrends(movie, data) {
   if (movie.poster_path) {
     const posterUrlWeeklyTrends = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : '/src/images/coming_soon_default.jpg'; // шлях до дефолтної картинки
-
-    // const posterUrlWeeklyTrends = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+      : '/src/images/coming_soon_default.jpg';
     const posterWeeklyTrends = document.createElement('img');
     posterWeeklyTrends.src = posterUrlWeeklyTrends;
     posterWeeklyTrends.alt = `${movie.title} Poster`;
@@ -69,13 +65,12 @@ function createFilmCardWeeklyTrends(movie, data) {
     const movieInfoWeeklyTrends = document.createElement('div');
     movieInfoWeeklyTrends.className = 'weekly-trends-movie-info';
 
-    const titleGenresWrapperWeeklyTrends = document.createElement('div'); // Окремий div для  жанрів та зірок
+    const titleGenresWrapperWeeklyTrends = document.createElement('div');
     titleGenresWrapperWeeklyTrends.className = 'title-genres-wrapper';
 
     const titleCodeWeeklyTrends = document.createElement('h2');
     titleCodeWeeklyTrends.classList.add('weekly-trends-movie-title');
     titleCodeWeeklyTrends.textContent = movie.title;
-    // titleGenresWrapperWeeklyTrends.appendChild(titleCodeWeeklyTrends);
     movieInfoWeeklyTrends.appendChild(titleCodeWeeklyTrends);
 
     const genresCodeWeeklyTrends = document.createElement('p');
@@ -85,9 +80,6 @@ function createFilmCardWeeklyTrends(movie, data) {
       data.release_date
     );
     titleGenresWrapperWeeklyTrends.appendChild(genresCodeWeeklyTrends);
-
-
-    // movieInfoWeeklyTrends.appendChild(titleGenresWrapperWeeklyTrends);
 
     const ratingCodeWeeklyTrends = document.createElement('div');
     ratingCodeWeeklyTrends.className = 'weekly-trends-rating';
@@ -114,23 +106,9 @@ function createFilmCardWeeklyTrends(movie, data) {
     titleGenresWrapperWeeklyTrends.appendChild(ratingCodeWeeklyTrends);
     movieInfoWeeklyTrends.appendChild(titleGenresWrapperWeeklyTrends);
 
-    const ratingsArrayWeeklyTrends = document.querySelectorAll(
-      '.weekly-trends-rating'
-    );
-    if (ratingsArrayWeeklyTrends.length > 0) {
-      showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
-    }
-
-    // Ініціалізування зіркового рейтингу RateYo
-    // $(ratingElement).rateYo({
-    //   rating: movieData.vote_average / 2, // Поділити рейтинг на 2, оскільки RateYo використовує шкалу від 0 до 5
-    //   readOnly: true, // не можна змінювати рейтинг
-    //   starWidth: '10px', // Розмір зірок
-    //   precision: 2, // Заокруглення до двох десятих
-    // });
     movieCardWeeklyTrends.appendChild(movieInfoWeeklyTrends);
 
-    movieCardWeeklyTrends.addEventListener('click', function () {
+    movieCardWeeklyTrends.addEventListener('click', () => {
       openModalPopUp(data.id);
     });
   }
@@ -140,7 +118,7 @@ function createFilmCardWeeklyTrends(movie, data) {
 
 function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
   const yearFilmWeeklyTrends = releaseDateFilmWeeklyTrends
-    ? releaseDateFilmWeeklyTrends.slice(0, 4) // Отримуємо рік з дати
+    ? releaseDateFilmWeeklyTrends.slice(0, 4)
     : 'Not yet';
 
   if (genresArrayFilmWeeklyTrends.length === 0) {
@@ -152,9 +130,7 @@ function getGenres(genresArrayFilmWeeklyTrends, releaseDateFilmWeeklyTrends) {
   } else {
     return (
       genresArrayFilmWeeklyTrends
-        .map(function (genreFilmWeeklyTrends) {
-          return genreFilmWeeklyTrends.name;
-        })
+        .map(genreFilmWeeklyTrends => genreFilmWeeklyTrends.name)
         .join(', ') +
       ' | ' +
       yearFilmWeeklyTrends
