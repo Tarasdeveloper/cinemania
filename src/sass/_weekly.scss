@@ -148,7 +148,7 @@ body {
 @media screen and (min-width: 320px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
-    width: 320px;
+    max-width: 320px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
@@ -198,7 +198,7 @@ body {
 @media screen and (min-width: 768px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
-    width: 768px;
+    max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 52px;
@@ -255,7 +255,7 @@ body {
 @media screen and (min-width: 1280px) {
   /* ------------------------WEEKLY TRENDS-------------------------- */
   .weekly-trends-container {
-    width: 1246px;
+    max-width: 1246px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 80px;
