@@ -45,7 +45,7 @@
   left: 50%;
   margin: 0;
   padding: 7px;
-  background-color: #f3f1ef;
+  background-color: var(--black-bg);
   transform: translateX(-50%);
   overflow-y: scroll;
   max-width: 840px;
@@ -55,10 +55,11 @@
   height: max-content;
   padding-left: 20px;
   text-align: center;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
 .team__title {
   padding-top: 13px;
-  color: var(--bg-mob-menu);
+  color: var(--white);
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -129,7 +130,7 @@
 .team__name {
   font-size: 14px;
   font-weight: 600;
-  color: black;
+  color: var(--white);
   transition-duration: 0.5s;
   margin-bottom: 2px;
   transform: translateZ(0); /* Добавленная строка */
@@ -152,7 +153,7 @@
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 2px;
-  color: var(--gray);
+  color: var(--light-gray);
   @media screen and (min-width: 1280px) {
     font-size: 18px;
   }
@@ -197,3 +198,46 @@
     transform: translateX(100%);
   }
 }
+
+ body.is-light-mode {
+    .team__modal {
+      background-color: var(--white);
+      box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
+    }
+    .team__title { 
+      color: var(--black-bg);
+    }
+    .team__name {
+     color: var(--black-bg) ;
+    }
+ }
+
+ //! Scrollbar width
+  .team__modal::-webkit-scrollbar {
+    @media screen and (min-width: 320px) {
+    width: 5px;
+    }
+    @media screen and (min-width: 768px) {
+    width: 7.5px;
+    }
+    @media screen and (min-width: 1280px) {
+    width: 10px;
+    }
+  }
+
+  //! Scrollbar Track 
+  .team__modal::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 5px;
+  }
+
+  //! Scrollbar Handle 
+  .team__modal::-webkit-scrollbar-thumb {
+    background: var(--linear-one);
+    border-radius: 5px;
+  }
+
+  //! Scrollbar Handle on hover
+  .team__modal::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(141.22deg, #dca71f 9.4%, #db3b17 91.91%);
+  }
