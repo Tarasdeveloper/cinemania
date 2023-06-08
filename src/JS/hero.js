@@ -93,6 +93,7 @@ function createTrendingMarkup(movieOfDay) {
     <div class="hero-container">
         <div class="hero-container__background">
           <div class="hero-container__background-dark"></div>
+          <div class="hero-container__background-darker"></div>
           <div class="hero-container__background-image" 
             style="background-image: 
             url(https://image.tmdb.org/t/p/original${
