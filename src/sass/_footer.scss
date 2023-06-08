@@ -5,12 +5,13 @@ body {
       .footer__text,
       .footer__sub,
       .footer__link {
-        color: var(--black-bg);
+        color: var(--gray);
       }
       .footer__link:hover,
       .footer__link:focus {
-        color: #ff6b08;
+        color: var(--accent);
         text-decoration: none; /* Remove underline on hover and focus */
+        border-bottom-color: none; /* Updated border color on hover and focus */
       }
     }
   }
@@ -81,9 +82,9 @@ body {
 
   &:hover,
   &:focus {
-    color: #ff6b08;
+    color: var(--accent);
     text-decoration: none; /* Remove underline on hover and focus */
-    border-bottom-color: #070707; /* Updated border color on hover and focus */
+    
   }
 
   &.footer__link--underline {
