@@ -62,7 +62,11 @@ function renderModal({
                 </p>
                 <button type="button" class="add-btn"  id="add">Add to my library </button>   
                 <button type="button" class="add-btn hidden" id="remove">Remove from my library</button>
-                <button type="button" class="modal-close-button">X</button>
+                <button type="button" class="modal-close-button">
+                  <svg class="modal-close-icon">
+                    <use href="./images/sprite.svg#icon-close"></use>
+                  </svg>
+                </button>
             </div>
         </div>`
   );
