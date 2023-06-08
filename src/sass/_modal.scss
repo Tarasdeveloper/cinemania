@@ -136,6 +136,27 @@
         overflow-y: auto;
     }
 
+    
+    //! Scrollbar width
+    .modal-about-description::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    //! Scrollbar Track 
+    .modal-about-description::-webkit-scrollbar-track {
+        background:var(--light-gray);
+    }
+    
+    //! Scrollbar Handle 
+    .modal-about-description::-webkit-scrollbar-thumb {
+        background: var(--linear-one);
+    }
+    
+    //! Scrollbar Handle on hover
+    .modal-about-description::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(141.22deg, #dca71f 9.4%, #db3b17 91.91%);
+    }
+
     .modal-close-button {
         position: absolute;
         width: 24px;
