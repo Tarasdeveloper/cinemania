@@ -1,0 +1,112 @@
+body {
+  &.is-light-mode {
+    background-color: var(--white);
+    .modal-oops-details-section {
+      .modal-oops-details-card {
+        background-color: var(--white);
+      }
+      .modal-oops-details-title {
+        color: var(--black-bg);
+      }
+      .modal-oops-details-close-btn {
+        color: var(--black-bg);
+      }
+    }
+  }
+}
+.modal-oops-details-backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  display: flex;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  transition: display var(--transit);
+}
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.modal-oops-details-card {
+  position: relative;
+  background: #111111;
+  box-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
+  border-radius: 16px;
+  width: 254px;
+  height: 278px;
+  padding: 38px 20px 8px;
+  animation-name: modalopen;
+  animation-duration: 1.75s;
+}
+.modal-oops-details-close-btn {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  color: var(--white);
+  transition: color var(--transit);
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.modal-oops-details-title {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.18;
+  color: var(--white);
+}
+.modal-oops-details-img {
+  left: 75px;
+  position: absolute;
+}
+@media screen and (min-width: 768px) {
+  .modal-oops-details-card {
+    width: 609px;
+    height: 400px;
+    padding-top: 124px;
+    padding-left: 20px;
+  }
+  .modal-oops-details-close-btn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .modal-oops-details-title {
+    font-size: 24px;
+    line-height: 1.16;
+  }
+
+  .modal-oops-details-img {
+    left: 303px;
+    top: 124px;
+  }
+  .modal-oops-details-close-btn {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modal-oops-details-card {
+    width: 700px;
+    padding-top: 150px;
+    padding-left: 50px;
+  }
+
+  .modal-oops-details-img {
+    left: 337px;
+    top: 77px;
+  }
+}

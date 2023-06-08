@@ -1,5 +1,6 @@
 import API_key from './api_key';
 import axios from 'axios';
+import img from '../images/coming_soon_default.jpg';
 const url = window.location.href;
 export async function openModalPopUp(event) {
   const id = event;
@@ -26,7 +27,9 @@ function renderModal({
 }) {
   const modalPopUpBackdrop = document.querySelector('.modal-pop-up-backdrop');
   modalPopUpBackdrop.innerHTML = ' ';
-  const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : img;
   const vote_averageNew = vote_average.toFixed(1);
   const popularityNew = popularity.toFixed(1);
   let genresNew = '';
@@ -104,7 +107,7 @@ function renderModal({
     removeBtn.classList.remove('hidden');
   }
   let existing = getAddedMovies();
-  existing = existing ? existing : []; 
+  existing = existing ? existing : [];
   if (existing.includes(id)) {
     addBtn.classList.add('hidden');
     removeBtn.classList.remove('hidden');
@@ -127,14 +130,13 @@ function renderModal({
       return;
     }
 
-
     existing.push(id);
     setAddedMovies(existing);
 
     addBtn.classList.add('hidden');
     removeBtn.classList.remove('hidden');
     async function getInfoMovie(movie_id) {
-      const url = `$https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}`;
+      const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}`;
       return await axios
         .get(url)
         .then(response => {
