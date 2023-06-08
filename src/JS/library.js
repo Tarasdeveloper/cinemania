@@ -87,8 +87,7 @@ if (url.includes('mylibrary')) {
             <li class="info__descr" style="display:${style}">${stringOfGenres}</li>
             <li class="info__descr">${convertReleaseDate(date)}</li>
           </ul>
-        </div>
-        <div class="weekly-trends-rating">
+                <div class="weekly-trends-rating">
           <div class="weekly-trends-rating-body">
             <div class="weekly-trends-rating-active">
               <div class="weekly-trends-rating-items">
@@ -126,6 +125,8 @@ if (url.includes('mylibrary')) {
             </div>
           </div>
         </div>
+        </div>
+
       </div>
     `;
 
