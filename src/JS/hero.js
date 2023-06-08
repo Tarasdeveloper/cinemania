@@ -1,8 +1,8 @@
 import { getDayTrending, getVideos } from './api';
 import * as basicLightbox from 'basiclightbox';
 import { openModalPopUp } from './modal-pop-up.js';
-import { openModalOops } from './modal-oops';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
+import { openModalOops } from './modal-oops';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -40,6 +40,13 @@ async function displayTrendingMovie() {
     detailsBtn.addEventListener('click', () => {
       openModalPopUp(movieOfDay.id);
     });
+
+    const ratingsArrayWeeklyTrends = document.querySelectorAll(
+      '.weekly-trends-rating'
+    );
+    if (ratingsArrayWeeklyTrends.length > 0) {
+      showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, movieOfDay);
+    }
   } catch (error) {
     console.log(error);
     openModalOops();
@@ -154,7 +161,7 @@ function createTrendingMarkup(movieOfDay) {
     '.weekly-trends-rating'
   );
   if (ratingsArrayWeeklyTrends.length > 0) {
-    showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, data);
+    showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, movieOfDay);
   }
   hero.innerHTML = markup;
 }
