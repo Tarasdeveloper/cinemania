@@ -4,6 +4,8 @@
 
 .hero-container {
   overflow: hidden;
+  position: relative;
+
 
   &__background-poster {
     width: 100%;
@@ -20,8 +22,17 @@
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-left: auto;
     position: absolute;
+    top: 0;
+    right: 0;
+
+    @media screen and (min-width: 768px) {
+        background-position: 160px 0;
+      }
+    
+    @media screen and (min-width: 1280px) {
+      background-position: 278px 0;
+    }
   }
 
   &__background-dark {
@@ -35,6 +46,18 @@
     position: absolute;
     top: 0;
     right: 0;
+
+    @media screen and (min-width: 768px) {
+        background: linear-gradient 81.57deg,
+          #111111 12.76%, rgba(17, 17, 17, 0) 72.65%;
+      }
+    
+    @media screen and (min-width: 1280px) {
+      background: linear-gradient 83.06deg,
+        #111111 11.91%,
+        rgba(17, 17, 17, 0) 73.11%;
+      background-position: 200px 0;
+    }
   }
 
   &__content {
@@ -57,9 +80,6 @@
   &__background {
     height: 100%;
     padding: 0;
-    // position: relative;
-    // top: 0;
-    // right: 0;
   }
 
   &__card {
@@ -68,6 +88,7 @@
     height: 380px;
     margin-top: auto;
     margin-bottom: auto;
+    padding-left: 5px;
     background-repeat: no-repeat;
     position: relative;
     top: 0;
@@ -76,6 +97,7 @@
 
     @media screen and (min-width: 768px) {
       height: 372px;
+      padding-left: 17px;
     }
 
     @media screen and (min-width: 1280px) {
