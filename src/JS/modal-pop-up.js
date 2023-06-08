@@ -63,9 +63,9 @@ function renderModal({
                 <button type="button" class="add-btn"  id="add">Add to my library </button>   
                 <button type="button" class="add-btn hidden" id="remove">Remove from my library</button>
                 <button type="button" class="modal-close-button">
-                  <svg class="modal-close-icon">
-                    <use href="./images/sprite.svg#icon-close"></use>
-                  </svg>
+                <svg class="modal-close-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 17.25 6.75 6.75m10.5 0-10.5 10.5"/>
+                </svg>
                 </button>
             </div>
         </div>`
