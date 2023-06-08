@@ -1,5 +1,7 @@
 import Pagination from 'tui-pagination';
 
+const container = document.getElementById('tui-pagination-container');
+
 const totalEl = 0;
 const page = 1;
 
@@ -30,4 +32,10 @@ const options = {
   },
 };
 
-const pagination = new Pagination('pagination', options);
+// const pagination = new Pagination('pagination', options);
+function createPagination() {
+  const instance = new Pagination(paginationElem, options);
+
+  return instance;
+}
+export default createPagination;

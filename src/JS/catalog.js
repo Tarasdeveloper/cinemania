@@ -1,15 +1,13 @@
 import axios from 'axios';
-// import { API_key } from './api_key';
 const API_key = '839ee1ac45e2249141bd738796b376ad';
 import Pagination from 'tui-pagination';
 import { emptyStar, fullStar, halfStar } from './stars';
+import img from '../images/coming_soon_default.jpg';
+import { openModalPopUp } from './modal-pop-up';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const TREND_URL = `${BASE_URL}/trending/movie/week`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
-const modal = document.querySelector('.modal-weekly');
-const closeButton = document.querySelector('.modal__close-btn');
-const modalPoster = document.querySelector('.modal-weekly__poster');
 const searchErrorMessage = document.querySelector('.cards__message');
 
 let searchPage = 1;
@@ -155,11 +153,15 @@ async function createListMarkup(data) {
           throw new Error('Invalid rating');
       }
 
+      const imagePath = poster_path
+        ? `https://image.tmdb.org/t/p/w500${poster_path}`
+        : img;
+
       movieArray.push(`
         <li class='cards-list__item hover-cursor' data-id='${id}'>
           <img
             class='cards-list__img'
-            src='https://image.tmdb.org/t/p/w500${poster_path}'
+            src='${imagePath}'
             alt='${original_title}'
             loading='lazy'
             data-id='${id}'
@@ -185,10 +187,10 @@ async function createListMarkup(data) {
     return '';
   }
 }
-
 const cards = document.querySelector('#cards__list');
-
+const clearInputBtn = document.querySelector('.catalog-cross-clear-btn');
 const form = document.querySelector('.search__form');
+const input = document.querySelector('.search__form--input');
 
 const loadSerialized = key => {
   try {
@@ -202,7 +204,7 @@ const loadSerialized = key => {
 const container = document.getElementById('tui-pagination-container');
 
 const options = {
-  totalItems: loadSerialized('totalItems') - 10000,
+  totalItems: loadSerialized('totalItems') - 15000,
   itemsPerPage: 12,
   visiblePages: 4,
   page: 1,
@@ -312,22 +314,31 @@ if (pagination) {
     }
   });
 }
-
 if (cards) {
-  cards.addEventListener('click', async evt => {
-    modal.classList.remove('is-hidden');
-    const id = evt.target.dataset.id;
-    const movie = await getDetailFilm(id);
-    closeButton.addEventListener('click', () => {
-      modal.classList.add('is-hidden');
-      modalPoster.innerHTML = '';
-    });
+  cards.addEventListener('click', function (event) {
+    const card = event.target.closest('.cards-list__item');
+    if (card) {
+      const movieId = card.dataset.id;
+      console.log(movieId);
+      openModalPopUp(movieId);
+    }
   });
 }
 
-async function getDetailFilm(movie_id) {
-  const response = await axios.get(
-    `${BASE_URL}/movie/${movie_id}?api_key=${API_key}&language=en-US`
-  );
-  return response.data;
+if (clearInputBtn) {
+  clearInputBtn.addEventListener('click', onClickClearCrossBtn);
+  input.addEventListener('input', onInput);
+
+  function onInput(e) {
+    clearInputBtn.classList.remove('catalog-cross-clear-btn-hide');
+    const inputValue = e.target.value.trim();
+    if (inputValue === '') {
+      clearInputBtn.classList.add('catalog-cross-clear-btn-hide');
+    }
+  }
+  function onClickClearCrossBtn(e) {
+    e.preventDefault();
+    form.reset();
+    clearInputBtn.classList.add('catalog-cross-clear-btn-hide');
+  }
 }
