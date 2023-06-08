@@ -23,12 +23,15 @@ body {
       .tui-page-btn.tui-first {
         background-image: url('../images/pagination/left-arrow_mobil--light.png');
       }
+
       .tui-page-btn.tui-last {
         background-image: url('../images/pagination/right-arrow_mobil--light.png');
       }
+
       .tui-page-btn.tui-next {
         background-image: url('../images/pagination/right-arrow_mobil--light.png');
       }
+
       .tui-prev {
         background-image: url('../images/pagination/left-arrow_mobil--light.png');
       }
@@ -38,12 +41,15 @@ body {
       .tui-page-btn.tui-first {
         background-image: url('../images/pagination/left-arrow--light.png');
       }
+
       .tui-page-btn.tui-prev {
         background-image: url('../images/pagination/left-arrow--light.png');
       }
+
       .tui-page-btn.tui-last {
         background-image: url('../images/pagination/right-arrow--light.png');
       }
+
       .tui-page-btn.tui-next {
         background-image: url('../images/pagination/right-arrow--light.png');
       }
@@ -52,28 +58,24 @@ body {
 }
 
 .cards__list {
-  display: grid;
-  max-width: calc(320px - 40px);
-  grid-template-columns: repeat(1, minmax(280px, 1fr));
-  grid-row-gap: 16px;
+  display: flex;
+  width: 280px;
   margin: 0 auto;
   list-style: none;
   justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 16px;
 
   position: relative;
 
   @media screen and (min-width: 768px) {
-    max-width: calc(768px - 64px);
-    grid-template-columns: repeat(3, minmax(224px, 1fr));
-    grid-column-gap: 16px;
-    grid-row-gap: 28px;
+    width: 704px;
+    gap: 28px 16px;
   }
 
   @media screen and (min-width: 1200px) {
-    max-width: calc(1280px - 64px);
-    grid-template-columns: repeat(3, minmax(395px, 1fr));
-    grid-column-gap: 16px;
-    grid-row-gap: 32px;
+    width: 1217px;
+    row-gap: 32px;
   }
 }
 
@@ -110,11 +112,9 @@ body {
 .cards-list__item::before {
   position: absolute;
   content: ' ';
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 63.48%,
-    rgba(0, 0, 0, 0.9) 92.16%
-  );
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0) 63.48%,
+      rgba(0, 0, 0, 0.9) 92.16%);
   top: 0;
   left: 0;
   width: 100%;
@@ -276,13 +276,11 @@ body {
 }
 
 .star {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#ffc226),
-    to(#f84119)
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(#ffc226),
+      to(#f84119));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
