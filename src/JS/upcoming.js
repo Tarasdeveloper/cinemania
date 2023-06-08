@@ -1,4 +1,6 @@
 import { getUppcomingVideos, getGenre } from './upcoming_api';
+import axios from 'axios';
+import basicLightbox from 'basiclightbox';
 
 const refs = {
   upcomingEmptySection: document.getElementById('upcomingEmptySection'),
@@ -73,6 +75,100 @@ async function displayUpcomingMovie() {
         }
       );
 
+      const id = upcomingMovie.id;
+      const url = window.location.href;
+      const addBtn = document.getElementById('addUpcoming');
+      const removeBtn = document.getElementById('removeUpcoming');
+      function getAddedMovies() {
+        return JSON.parse(localStorage.getItem('addedMovies'));
+      }
+      function setAddedMovies(arr) {
+        localStorage.setItem('addedMovies', JSON.stringify(arr));
+      }
+      if (url.includes('library')) {
+        addBtn.classList.add('hidden');
+        removeBtn.classList.remove('hidden');
+      }
+      let existing = getAddedMovies();
+      existing = existing ? existing : [];
+      if (existing.includes(id)) {
+        addBtn.classList.add('hidden');
+        removeBtn.classList.remove('hidden');
+      }
+
+      addBtn.addEventListener('click', onClickAdd);
+      removeBtn.addEventListener('click', onClickRemove);
+      function onClickAdd() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+
+        if (url.includes('library')) {
+          addBtn.classList.remove('hidden');
+          removeBtn.classList.add('hidden');
+        }
+
+        if (existing.includes(id)) {
+          addBtn.classList.add('hidden');
+          removeBtn.classList.remove('hidden');
+          return;
+        }
+
+        existing.push(id);
+        setAddedMovies(existing);
+
+        addBtn.classList.add('hidden');
+        removeBtn.classList.remove('hidden');
+        async function getInfoMovie(movie_id) {
+          const url = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}`;
+          return await axios
+            .get(url)
+            .then(response => {
+              return response.data;
+            })
+            .catch(error => {
+              const instance = basicLightbox.create(`
+		<div class="notification-trailer-fail">
+    	<p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> There is no info of this film</p>
+        <div class="bg-box"></div>
+    </div>`);
+              instance.show();
+            });
+        }
+        if (url.includes('library')) {
+          getInfoMovie(id).then(film => {
+            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
+          });
+        }
+      }
+
+      function removeFromPage(id) {
+        const el = document.querySelector(`[data-id="${id}"]`);
+
+        if (el.parentElement.className === 'mylib-gallery__list catalog') {
+          el.remove();
+        } else {
+          el.remove();
+        }
+      }
+
+      function onClickRemove() {
+        let existing = getAddedMovies();
+        existing = existing ? existing : [];
+        if (existing.includes(id)) {
+          let index = existing.findIndex(id => id === id);
+
+          existing.splice(index, 1);
+          setAddedMovies(existing);
+          addBtn.classList.remove('hidden');
+          removeBtn.classList.add('hidden');
+        }
+        if (url.includes('library')) {
+          const libraryFilms = getAddedMovies() || [];
+
+          removeFromPage(id);
+        }
+      }
+
       refs.upcomingTitle.innerHTML = upcomingMovie.original_title;
       refs.upcomingDate.innerHTML = formatteUpcomingDate;
       refs.upcomingVoteAverage.innerHTML = upcomingMovie.vote_average;
@@ -84,9 +180,7 @@ async function displayUpcomingMovie() {
       refs.upcomingEmptySection.classList.remove('hidden');
       refs.upcomingSection.classList.add('hidden');
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }
 
 displayUpcomingMovie();
