@@ -102,10 +102,10 @@ function renderModal({
   function setAddedMovies(arr) {
     localStorage.setItem('addedMovies', JSON.stringify(arr));
   }
-  if (url.includes('library')) {
-    addBtn.classList.add('hidden');
-    removeBtn.classList.remove('hidden');
-  }
+  // if (url.includes('library')) {
+  //   addBtn.classList.add('hidden');
+  //   removeBtn.classList.remove('hidden');
+  // }
   let existing = getAddedMovies();
   existing = existing ? existing : [];
   if (existing.includes(id)) {
