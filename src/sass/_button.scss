@@ -1,432 +1,466 @@
 //! Стилі для мобайл
 @media screen and (min-width: 320px) {
-    .load-btn,
-    .search-btn,
-    .trailer-btn, 
-    .remind-btn,
-    .get-started-btn,
-    .more-details-btn,
-    .orange-add-btn {
-            border: 1px solid;
-            border-radius: 74px;
-            padding: 11px 23.5px;
-            font-family: 'Roboto';
-            font-weight: 500;
-            font-size: 12px;  
-            line-height: 1.16;
-            color: var(--black-bg);
-            transition: color var(--transit);
-            position: relative;
-            z-index: 998;
+  .load-btn,
+  .search-btn,
+  .trailer-btn,
+  .remind-btn,
+  .get-started-btn,
+  .more-details-btn,
+  .orange-add-btn {
+    border: 1px solid;
+    border-radius: 74px;
+    padding: 11px 23.5px;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+    color: var(--black-bg);
+    transition: color var(--transit);
+    position: relative;
+    z-index: 998;
+  }
+
+  .load-btn,
+  .search-btn {
+    display: block;
+    width: 122px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .more-details-btn {
+    background-color: transparent;
+    color: var(--white);
+  }
+
+  .load-btn::after,
+  .search-btn::after,
+  .trailer-btn::after,
+  .remind-btn::after,
+  .get-started-btn::after,
+  .orange-add-btn::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: var(--linear-one);
+    transition: background-color var(--transit);
+    border-radius: 74px;
+    z-index: -1;
+  }
+
+  .load-btn::before,
+  .search-btn::before,
+  .trailer-btn::before,
+  .remind-btn::before,
+  .get-started-btn::before,
+  .orange-add-btn::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: var(--linear-one);
+    border-radius: 74px;
+    z-index: -2;
+  }
+
+  .load-btn:hover,
+  .load-btn:focus,
+  .search-btn:hover,
+  .search-btn:focus,
+  .trailer-btn:hover,
+  .trailer-btn:focus,
+  .remind-btn:hover,
+  .remind-btn:focus,
+  .get-started-btn:hover,
+  .get-started-btn:focus,
+  .orange-add-btn:hover,
+  .orange-add-btn:focus {
+    color: var(--accent);
+    background: var(--white);
+  }
+
+  .remove-btn,
+  .add-btn {
+    padding: 12px 24px;
+    border: 1px solid;
+    border-radius: 74px;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+    color: var(--white);
+    transition: color var(--transit);
+    position: relative;
+    z-index: 998;
+  }
+
+  .remove-btn::after,
+  .add-btn::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--black-bg);
+    transition: background-color var(--transit);
+    border-radius: 74px;
+    z-index: -1;
+  }
+
+  .remove-btn::before,
+  .add-btn::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: var(--linear-one);
+    transition: background var(--transit);
+    border-radius: 74px;
+    z-index: -2;
+  }
+
+  .remove-btn:hover,
+  .remove-btn:focus,
+  .add-btn:hover,
+  .add-btn:focus {
+    color: var(--accent);
+  }
+
+  .remove-btn:hover::before,
+  .remove-btn:focus::before,
+  .add-btn:hover::before,
+  .add-btn:focus::before,
+  .remove-btn:hover::after,
+  .remove-btn:focus::after,
+  .add-btn:hover::after,
+  .add-btn:focus::after,
+  .load-btn:hover::after,
+  .search-btn:hover::after,
+  .trailer-btn:hover::after,
+  .remind-btn:hover::after,
+  .load-btn:focus::after,
+  .search-btn:focus::after,
+  .trailer-btn:focus::after,
+  .remind-btn:focus::after,
+  .get-started-btn:hover::after,
+  .get-started-btn:focus::after,
+  .orange-add-btn:hover::after,
+  .orange-add-btn:focus:after {
+    background: var(--white);
+  }
+
+  .more-details-btn:hover,
+  .more-details-btn:focus {
+    color: var(--accent);
+  }
+
+  .switch {
+    background: var(--linear-one);
+    border-radius: 194px;
+    border: 0px;
+    width: 44px;
+    height: 18px;
+    padding-left: 2px;
+    padding-right: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .switch::after {
+    content: '';
+    display: block;
+    width: 13.2px;
+    height: 13.5px;
+    background-color: var(--white);
+    border: 0px;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px;
+    z-index: 1;
+    transition: transform var(--transit);
+  }
+
+  .icon-moon {
+    position: absolute;
+    left: 3px;
+    width: 9.5px;
+    height: 9.7px;
+    z-index: 2;
+    transition: transform var(--transit);
+  }
+
+  .not-active {
+    visibility: hidden;
+  }
+
+  .icon-sun {
+    position: absolute;
+    width: 9.2px;
+    height: 9px;
+    right: 4px;
+    top: 4.5px;
+    z-index: -1;
+    transition: transform var(--transit);
+  }
+
+  .global-search-btn {
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+  }
+
+  .search-icon {
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+  }
+
+  .search-icon {
+    stroke: var(--white);
+  }
+
+  .global-search-btn::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: var(--linear-one);
+    transition: background var(--transit);
+    border-radius: 50%;
+    z-index: -2;
+  }
+
+  .global-search-btn::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--linear-one);
+    transition: background-color var(--transit);
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .global-search-btn:hover::after,
+  .global-search-btn:focus::after {
+    background-color: var(--white);
+  }
+
+  .global-search-btn:hover .search-icon,
+  .global-search-btn:focus .search-icon {
+    stroke: var(--accent);
+  }
+
+  .icon-moon-line.first {
+    width: 3.3px;
+    height: 11.55px;
+    position: absolute;
+    z-index: 2;
+    transform: translate(35.7px, 0.7px);
+    transition: transform var(--transit);
+  }
+
+  body.is-light-mode {
+    .remove-btn,
+    .add-btn {
+      color: var(--black-bg);
     }
 
-    .more-details-btn {
-        background-color: transparent;
-        color: var(--white);
-    }
-
-    .load-btn::after,
-    .search-btn::after,
-    .trailer-btn::after,
-    .remind-btn::after, 
-    .get-started-btn::after,
-    .orange-add-btn::after { 
-        content: "";
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background: var(--linear-one);
-        transition: background-color var(--transit);
-        border-radius: 74px;
-        z-index: -1;
-    }
-
-    .load-btn::before,
-    .search-btn::before,
-    .trailer-btn::before,
-    .remind-btn::before,
-    .get-started-btn::before,
-    .orange-add-btn::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        background: var(--linear-one);
-        border-radius: 74px;
-        z-index: -2; 
-    }
-
-    .load-btn:hover, .load-btn:focus,
-    .search-btn:hover, .search-btn:focus,
-    .trailer-btn:hover, .trailer-btn:focus,
-    .remind-btn:hover, .remind-btn:focus,
-    .get-started-btn:hover, .get-started-btn:focus,
-    .orange-add-btn:hover, .orange-add-btn:focus {
-        color: var(--accent); 
-        background: var(--white);
-    }
-
-    .remove-btn, .add-btn {
-        padding: 12px 24px; 
-        border: 1px solid;
-        border-radius: 74px;
-        font-family: 'Roboto';
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 1.16;
-        color: var(--white);
-        transition: color var(--transit);
-        position: relative;
-        z-index: 998;
-    }   
-  
-    .remove-btn::after, .add-btn::after {
-        content: "";
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background-color: var(--black-bg);
-        transition: background-color var(--transit);
-        border-radius: 74px;
-        z-index: -1;
-    }
-
-    .remove-btn::before, .add-btn::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        background: var(--linear-one);
-        transition: background var(--transit);
-        border-radius: 74px;
-        z-index: -2;
-    }
-
-    .remove-btn:hover, 
-    .remove-btn:focus, 
+    .remove-btn:hover,
     .add-btn:hover,
-    .add-btn:focus { 
-        color: var(--accent);
+    .remove-btn:focus,
+    .add-btn:focus {
+      color: var(--accent);
     }
 
-    .remove-btn:hover::before,
-    .remove-btn:focus::before,
-    .add-btn:hover::before,
-    .add-btn:focus::before, 
+    .remove-btn::after,
+    .add-btn::after {
+      background-color: var(--white);
+      transition: background-color var(--transit);
+    }
+
     .remove-btn:hover::after,
     .remove-btn:focus::after,
     .add-btn:hover::after,
-    .add-btn:focus::after, 
-    .load-btn:hover::after,
-    .search-btn:hover::after,
-    .trailer-btn:hover::after,
-    .remind-btn:hover::after, 
-    .load-btn:focus::after,
-    .search-btn:focus::after,
-    .trailer-btn:focus::after,
-    .remind-btn:focus::after,
-    .get-started-btn:hover::after,
-    .get-started-btn:focus::after,
-    .orange-add-btn:hover::after,
-    .orange-add-btn:focus:after { 
-        background: var(--white);
-    }
-
-    .more-details-btn:hover, .more-details-btn:focus { 
-        color: var(--accent);
-    }
-
-    .switch {
-        background:var(--linear-one);
-        border-radius: 194px;
-        border: 0px;
-        width: 44px;
-        height: 18px;
-        padding-left: 2px;
-        padding-right: 2px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-        overflow: hidden;
+    .add-btn:focus::after,
+    .remove-btn:hover::before,
+    .remove-btn:focus::before,
+    .add-btn:hover::before,
+    .add-btn:focus::before {
+      background: var(--black-bg);
     }
 
     .switch::after {
-        content: '';
-        display: block;
-        width: 13.2px;
-        height: 13.5px;
-        background-color: var(--white);
-        border: 0px;
-        border-radius: 50%;
-        position: absolute;
-        right: 2px;
-        z-index: 1;
-        transition: transform var(--transit);
-    }
-   
-    .icon-moon {
-        position: absolute;
-        left: 3px;
-        width: 9.5px;
-        height: 9.7px;
-        z-index: 2;
-        transition: transform var(--transit);
+      right: 0px;
+      transform: translateX(-29px);
     }
 
-    .not-active{
-        visibility: hidden;
+    .switch .icon-moon {
+      transform: rotate(360deg);
+      z-index: -1;
     }
 
-    .icon-sun {
-        position: absolute;
-        width: 9.2px;
-        height: 9px;
-        right: 4px;
-        top: 4.5px;
-        z-index: -1;
-        transition: transform var(--transit);
+    .switch .icon-sun {
+      z-index: 2;
+      transform: rotate(180deg);
     }
 
-    .global-search-btn {
-        width: 40px;
-        height: 40px;
-        border: 0px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 100;
+    .global-search-btn .search-icon {
+      stroke: var(--black-bg);
     }
 
-    .search-icon {
-        width: 18px;
-        height: 18px;
-        fill: transparent;
+    .global-search-btn:hover .search-icon,
+    .global-search-btn:focus .search-icon {
+      stroke: var(--accent);
     }
 
-     .search-icon {
-        stroke: var(--white);
-    }
-
-    .global-search-btn::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        background: var(--linear-one);
-        transition: background var(--transit);
-        border-radius: 50%;
-        z-index: -2;
-    }
-
-   .global-search-btn::after {
-        content: "";
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background-color: var(--linear-one);
-        transition: background-color var(--transit);
-        border-radius: 50%;
-        z-index: -1;
-    }
-
-    .global-search-btn:hover::after, 
-    .global-search-btn:focus::after  {
-        background-color: var(--white);
-    }
-
-    .global-search-btn:hover .search-icon, 
-    .global-search-btn:focus .search-icon  { 
-        stroke: var(--accent);
+    .switch .icon-moon {
+      transform: rotate(360deg);
+      z-index: -1;
     }
 
     .icon-moon-line.first {
-        width: 3.3px;
-        height: 11.55px;   
-        position: absolute;
-        z-index: 2;
-        transform: translate(35.7px, 0.7px);
-        transition: transform var(--transit);
+      width: 3.3px;
+      height: 11.55px;
+      top: 2.5px;
+      left: 3px;
+      transform: rotate(180deg);
     }
-
-    body.is-light-mode {
-        .remove-btn, .add-btn {
-            color: var(--black-bg);
-        }   
-        
-        .remove-btn:hover, .add-btn:hover,
-        .remove-btn:focus, .add-btn:focus {
-            color: var(--accent);
-        }    
-
-        .remove-btn::after, .add-btn::after {
-            background-color: var(--white);
-            transition: background-color var(--transit);
-        }
-
-        .remove-btn:hover::after,
-        .remove-btn:focus::after,
-        .add-btn:hover::after,
-        .add-btn:focus::after,
-        .remove-btn:hover::before,
-        .remove-btn:focus::before,
-        .add-btn:hover::before,
-        .add-btn:focus::before {
-            background: var(--black-bg);
-        }
-            
-        .switch::after {
-            right: 0px; 
-            transform: translateX(-29px);
-        }
-
-        .switch .icon-moon {
-            transform: rotate(360deg);
-            z-index: -1;
-        }
-        
-        .switch .icon-sun {
-            z-index: 2;
-            transform: rotate(180deg);
-        }
-
-        .global-search-btn .search-icon {
-            stroke: var(--black-bg);
-        }
-        
-        .global-search-btn:hover .search-icon, 
-        .global-search-btn:focus .search-icon  { 
-            stroke: var(--accent);
-        }
-      
-        .switch .icon-moon {
-            transform: rotate(360deg);
-            z-index: -1;
-        }
-
-        .icon-moon-line.first {
-            width: 3.3px;
-            height: 11.55px;    
-            top: 2.5px;
-            left: 3px;
-            transform: rotate(180deg);
-        }
-    }
+  }
 }
 //! Стилі для таблета
 @media screen and (min-width: 768px) {
-    .load-btn,
-    .search-btn,
-    .trailer-btn, 
-    .remind-btn, 
-    .orange-add-btn {
-        font-size: 14px;
-        line-height: 1.14;
-    }
+  .load-btn,
+  .search-btn,
+  .trailer-btn,
+  .remind-btn,
+  .orange-add-btn {
+    font-size: 14px;
+    line-height: 1.14;
+  }
 
-    .get-started-btn, .more-details-btn {
-        font-size: 14px;
-        line-height: 1.43;
-        padding-top: 9px;
-        padding-bottom: 9px;
-    }
+  .load-btn,
+  .search-btn {
+    display: block;
+    width: 134px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .remove-btn, .add-btn {
-        line-height: 1.33;
-    }    
-    
-    .switch {
-        width: 60px;
-        height: 24px;
-    }
+  .get-started-btn,
+  .more-details-btn {
+    font-size: 14px;
+    line-height: 1.43;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
 
+  .remove-btn,
+  .add-btn {
+    line-height: 1.33;
+  }
+
+  .switch {
+    width: 60px;
+    height: 24px;
+  }
+
+  .switch::after {
+    width: 18px;
+    height: 18px;
+    right: 3px;
+  }
+
+  .icon-moon {
+    width: 13px;
+    height: 13px;
+    left: 4px;
+  }
+
+  .icon-sun {
+    width: 14px;
+    height: 14px;
+    top: 5px;
+  }
+
+  .global-search-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icon-moon-line.first {
+    transform: translate(49.1px, 1.5px) scale(140%);
+  }
+
+  body.is-light-mode {
     .switch::after {
-        width: 18px;
-        height: 18px;
-        right: 3px;
-    }
-   
-    .icon-moon {
-        width: 13px;
-        height: 13px;
-        left: 4px;
-    }
-
-    .icon-sun {
-        width: 14px;
-        height: 14px;
-        top: 5px;
-    }
-   
-    .global-search-btn {
-        width: 44px;
-        height: 44px;
+      right: 0px;
+      transform: translateX(-39px);
     }
 
     .icon-moon-line.first {
-        transform: translate(49.1px, 1.5px) scale(140%);
+      transform: translate(2.1px, 2.5px) scale(140%) rotate(180deg);
     }
-    
-    body.is-light-mode { 
-        .switch::after {
-            right: 0px; 
-            transform: translateX(-39px);
-        }
-
-        .icon-moon-line.first {
-            transform: translate(2.1px, 2.5px) scale(140%) rotate(180deg);
-        }
-    }
-
+  }
 }
 //! Стилі для десктопа
 @media screen and (min-width: 1280px) {
-    .load-btn,
-    .search-btn
-    {
-        font-size: 18px;
-        line-height: 1.55;
-    }
+  .load-btn,
+  .search-btn {
+    font-size: 18px;
+    line-height: 1.55;
+    display: block;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .trailer-btn {
-        font-size: 16px;
-        line-height: 1.5;
-    } 
-    
-     .global-search-btn {
-        width: 48px;
-        height: 48px;
-    }
+  .trailer-btn {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 
-    
-    .get-started-btn, .more-details-btn {
-        font-size: 16px;
-        line-height: 1.5;
-        padding-top: 11px;
-        padding-bottom: 11px;
-    }
+  .global-search-btn {
+    width: 48px;
+    height: 48px;
+  }
 
+  .get-started-btn,
+  .more-details-btn {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
+  .icon-moon-line.first {
+    transform: translate(50px, 1.5px) scale(140%);
+  }
+
+  body.is-light-mode {
     .icon-moon-line.first {
-        transform: translate(50px, 1.5px) scale(140%);
+      transform: translate(1.5px, 2.5px) scale(140%) rotate(180deg);
     }
-
-    body.is-light-mode { 
-        .icon-moon-line.first {
-            transform: translate(1.5px, 2.5px) scale(140%) rotate(180deg);
-        }
-    }
+  }
 }
