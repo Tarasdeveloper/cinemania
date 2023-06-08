@@ -92,10 +92,6 @@ async function displayUpcomingMovie() {
         localStorage.setItem('addedMovies', JSON.stringify(arr));
       }
 
-      if (url.includes('library')) {
-        addBtn.classList.add('hidden');
-        removeBtn.classList.remove('hidden');
-      }
 
       let existing = getAddedMovies();
       existing = existing ? existing : [];
@@ -138,12 +134,14 @@ async function displayUpcomingMovie() {
             .catch(error);
         }
       }
-
+      function isId(el) {
+        return el === id
+      }
       function onClickRemove() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
         if (existing.includes(id)) {
-          let index = existing.findIndex(id => id === id);
+          let index = existing.findIndex(isId);
 
           existing.splice(index, 1);
           setAddedMovies(existing);
