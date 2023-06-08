@@ -1,6 +1,5 @@
 import { getUppcomingVideos, getGenre } from './upcoming_api';
 import axios from 'axios';
-import basicLightbox from 'basiclightbox';
 
 const refs = {
   upcomingEmptySection: document.getElementById('upcomingEmptySection'),
@@ -47,10 +46,14 @@ async function displayUpcomingMovie() {
         if (refs.upcomingMovieImg) {
           if (window.innerWidth <= 767) {
             upcomingPosterPath = upcomingMovie.poster_path;
-            upcomingImageUrl = `https://image.tmdb.org/t/p/w500${upcomingPosterPath}`;
+            upcomingImageUrl = upcomingPosterPath
+              ? `https://image.tmdb.org/t/p/w500${upcomingPosterPath}`
+              : '/src/images/coming_soon_default.jpg';
           } else {
             upcomingPosterPath = upcomingMovie.backdrop_path;
-            upcomingImageUrl = `https://image.tmdb.org/t/p/original/${upcomingPosterPath}`;
+            upcomingImageUrl = upcomingPosterPath
+              ? `https://image.tmdb.org/t/p/original/${upcomingPosterPath}`
+              : '/src/images/coming_soon_default.jpg';
           }
           refs.upcomingMovieImg.setAttribute('src', upcomingImageUrl);
         }
@@ -84,15 +87,19 @@ async function displayUpcomingMovie() {
       function getAddedMovies() {
         return JSON.parse(localStorage.getItem('addedMovies'));
       }
+
       function setAddedMovies(arr) {
         localStorage.setItem('addedMovies', JSON.stringify(arr));
       }
+
       if (url.includes('library')) {
         addBtn.classList.add('hidden');
         removeBtn.classList.remove('hidden');
       }
+
       let existing = getAddedMovies();
       existing = existing ? existing : [];
+
       if (existing.includes(id)) {
         addBtn.classList.add('hidden');
         removeBtn.classList.remove('hidden');
@@ -100,6 +107,7 @@ async function displayUpcomingMovie() {
 
       addBtn.addEventListener('click', onClickAdd);
       removeBtn.addEventListener('click', onClickRemove);
+
       function onClickAdd() {
         let existing = getAddedMovies();
         existing = existing ? existing : [];
@@ -142,6 +150,7 @@ async function displayUpcomingMovie() {
           addBtn.classList.remove('hidden');
           removeBtn.classList.add('hidden');
         }
+
         if (url.includes('library')) {
           const libraryFilms = getAddedMovies() || [];
 
