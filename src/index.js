@@ -11,3 +11,4 @@ import './JS/catalog';
 import './JS/library';
 import './JS/currentpage';
 import './JS/upcoming';
+import './JS/modal-oops-details';

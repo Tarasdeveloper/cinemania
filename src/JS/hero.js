@@ -3,6 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 import { openModalPopUp } from './modal-pop-up.js';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalOops } from './modal-oops';
+import { openModalOopsDetails } from './modal-oops-details';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -37,8 +38,12 @@ async function displayTrendingMovie() {
     });
 
     const detailsBtn = document.getElementById('details-btn');
-    detailsBtn.addEventListener('click', () => {
-      openModalPopUp(movieOfDay.id);
+    detailsBtn.addEventListener('click', async () => {
+      try {
+        await openModalPopUp(movieOfDay.id);
+      } catch (error) {
+        openModalOopsDetails();
+      }
     });
 
     const ratingsArrayWeeklyTrends = document.querySelectorAll(
@@ -48,30 +53,28 @@ async function displayTrendingMovie() {
       showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, movieOfDay);
     }
   } catch (error) {
-    console.log(error);
-    openModalOops();
+    handleError(error);
   }
 }
 
 function createAndShowLightbox(keyTrailer) {
-  const content = `<div class="video-container">
-    <button class="close-btn">X</button>
-    <iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>
-  </div>`;
+  const content = `
+    <div class="video-container">
+      <button class="close-btn">X</button>
+      <iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>
+    </div>
+  `;
 
   lightboxInstance = basicLightbox.create(content);
 
   lightboxInstance.show(() => {
     console.log('lightbox now visible');
     const closeBtn = lightboxInstance.element().querySelector('.close-btn');
-    closeBtn.addEventListener('click', () => {
-      resetLightbox();
-    });
+    closeBtn.addEventListener('click', resetLightbox);
   });
 
   window.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
-      console.log('hallo');
       resetLightbox();
     }
   });
@@ -89,74 +92,47 @@ function resetLightbox() {
 }
 
 function createTrendingMarkup(movieOfDay) {
+  const movieTitle = movieOfDay.title || movieOfDay.name;
+  const movieDescription = movieOfDay.overview.slice(0, 108) + '...';
+
   const markup = `
     <div class="hero-container">
-        <div class="hero-container__background">
-          <div class="hero-container__background-dark"></div>
-          <div class="hero-container__background-darker"></div>
-          <div class="hero-container__background-image" 
-            style="background-image: 
-            url(https://image.tmdb.org/t/p/original${
-              movieOfDay.backdrop_path
-            }" alt="Hero image" class="backend" loading="lazy");"> 
-          </div>
+      <div class="hero-container__background">
+        <div class="hero-container__background-dark"></div>
+        <div class="hero-container__background-darker"></div>
+        <div class="hero-container__background-image" 
+          style="background-image: url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path}" alt="Hero image" class="backend" loading="lazy");"> 
         </div>
+      </div>
       <div class="hero-container__card">
-          <div class="hero-container__content">
-            <div class="hero-container__content-box">
-              <h1 class="hero-container__title">${
-                movieOfDay.title || movieOfDay.name
-              }</h1>
-      <div class="weekly-trends-rating">
-        <div class="weekly-trends-rating-body">
-          <div class="weekly-trends-rating-active">
-            <div class="weekly-trends-rating-items">
-              <input
-                type="radio"
-                class="weekly-trends-rating-item"
-                value="1"
-                name="rating"
-              />
-              <input
-                type="radio"
-                class="weekly-trends-rating-item"
-                value="2"
-                name="rating"
-              />
-              <input
-                type="radio"
-                class="weekly-trends-rating-item"
-                value="3"
-                name="rating"
-              />
-              <input
-                type="radio"
-                class="weekly-trends-rating-item"
-                value="4"
-                name="rating"
-              />
-              <input
-                type="radio"
-                class="weekly-trends-rating-item"
-                value="5"
-                name="rating"
-              />
+        <div class="hero-container__content">
+          <div class="hero-container__content-box">
+            <h1 class="hero-container__title">${movieTitle}</h1>
+            <div class="weekly-trends-rating">
+              <div class="weekly-trends-rating-body">
+                <div class="weekly-trends-rating-active">
+                  <div class="weekly-trends-rating-items">
+                    <input type="radio" class="weekly-trends-rating-item" value="1" name="rating" />
+                    <input type="radio" class="weekly-trends-rating-item" value="2" name="rating" />
+                    <input type="radio" class="weekly-trends-rating-item" value="3" name="rating" />
+                    <input type="radio" class="weekly-trends-rating-item" value="4" name="rating" />
+                    <input type="radio" class="weekly-trends-rating-item" value="5" name="rating" />
+                  </div>
+                </div>
+              </div>
+            </div> 
+            <p class="hero-container__description">${movieDescription}</p>
+            <div class="hero-container__btns">
+              <button class="trailer-btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
+              <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
             </div>
           </div>
         </div>
-      </div> 
-              <p class="hero-container__description">${
-                movieOfDay.overview.slice(0, 108) + '...'
-              }</p>
-              <div class="hero-container__btns">
-                <button class="trailer-btn" id="trailer-btn" data-btn="trailer-fail">Watch trailer</button>
-                <button class="more-details-btn" id="details-btn" data-btn="details-fail">More details</button>
-              </div>
-            </div>
-          </div>
       </div>
     </div>
   `;
+
+  hero.innerHTML = markup;
 
   const ratingsArrayWeeklyTrends = document.querySelectorAll(
     '.weekly-trends-rating'
@@ -164,7 +140,14 @@ function createTrendingMarkup(movieOfDay) {
   if (ratingsArrayWeeklyTrends.length > 0) {
     showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, movieOfDay);
   }
-  hero.innerHTML = markup;
+}
+
+function handleError(error) {
+  console.log(error);
+  if (!movieOfDay.data) {
+    openModalOopsDetails();
+  }
+  openModalOops();
 }
 
 displayTrendingMovie();
