@@ -125,29 +125,7 @@ async function displayUpcomingMovie() {
             .then(response => {
               return response.data;
             })
-            .catch(error => {
-              const instance = basicLightbox.create(`
-		<div class="notification-trailer-fail">
-    	<p class="notification-trailer-fail-text">OOPS...<br/> We are very sorry!<br /> There is no info of this film</p>
-        <div class="bg-box"></div>
-    </div>`);
-              instance.show();
-            });
-        }
-        if (url.includes('library')) {
-          getInfoMovie(id).then(film => {
-            myLibGallery.insertAdjacentHTML('beforeEnd', makeCard(film));
-          });
-        }
-      }
-
-      function removeFromPage(id) {
-        const el = document.querySelector(`[data-id="${id}"]`);
-
-        if (el.parentElement.className === 'mylib-gallery__list catalog') {
-          el.remove();
-        } else {
-          el.remove();
+            .catch(error);
         }
       }
 
