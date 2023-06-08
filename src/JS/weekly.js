@@ -69,13 +69,14 @@ function createFilmCardWeeklyTrends(movie, data) {
     const movieInfoWeeklyTrends = document.createElement('div');
     movieInfoWeeklyTrends.className = 'weekly-trends-movie-info';
 
-    const titleGenresWrapperWeeklyTrends = document.createElement('div'); // Окремий div для заголовку та жанрів
+    const titleGenresWrapperWeeklyTrends = document.createElement('div'); // Окремий div для  жанрів та зірок
     titleGenresWrapperWeeklyTrends.className = 'title-genres-wrapper';
 
     const titleCodeWeeklyTrends = document.createElement('h2');
     titleCodeWeeklyTrends.classList.add('weekly-trends-movie-title');
     titleCodeWeeklyTrends.textContent = movie.title;
-    titleGenresWrapperWeeklyTrends.appendChild(titleCodeWeeklyTrends);
+    // titleGenresWrapperWeeklyTrends.appendChild(titleCodeWeeklyTrends);
+    movieInfoWeeklyTrends.appendChild(titleCodeWeeklyTrends);
 
     const genresCodeWeeklyTrends = document.createElement('p');
     genresCodeWeeklyTrends.classList.add('weekly-trends-movie-genres');
@@ -85,7 +86,8 @@ function createFilmCardWeeklyTrends(movie, data) {
     );
     titleGenresWrapperWeeklyTrends.appendChild(genresCodeWeeklyTrends);
 
-    movieInfoWeeklyTrends.appendChild(titleGenresWrapperWeeklyTrends);
+
+    // movieInfoWeeklyTrends.appendChild(titleGenresWrapperWeeklyTrends);
 
     const ratingCodeWeeklyTrends = document.createElement('div');
     ratingCodeWeeklyTrends.className = 'weekly-trends-rating';
@@ -109,7 +111,8 @@ function createFilmCardWeeklyTrends(movie, data) {
     ratingBodyCodeWeeklyTrends.appendChild(ratingActiveCodeWeeklyTrends);
     ratingCodeWeeklyTrends.appendChild(ratingBodyCodeWeeklyTrends);
 
-    movieInfoWeeklyTrends.appendChild(ratingCodeWeeklyTrends);
+    titleGenresWrapperWeeklyTrends.appendChild(ratingCodeWeeklyTrends);
+    movieInfoWeeklyTrends.appendChild(titleGenresWrapperWeeklyTrends);
 
     const ratingsArrayWeeklyTrends = document.querySelectorAll(
       '.weekly-trends-rating'

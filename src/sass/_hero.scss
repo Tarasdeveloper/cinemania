@@ -6,7 +6,6 @@
   overflow: hidden;
   position: relative;
 
-
   &__background-poster {
     width: 100%;
     height: 100%;
@@ -27,9 +26,9 @@
     right: 0;
 
     @media screen and (min-width: 768px) {
-        background-position: 160px 0;
-      }
-    
+      background-position: 160px 0;
+    }
+
     @media screen and (min-width: 1280px) {
       background-position: 278px 0;
     }
@@ -48,13 +47,12 @@
     right: 0;
 
     @media screen and (min-width: 768px) {
-        background: linear-gradient 81.57deg,
-          #111111 12.76%, rgba(17, 17, 17, 0) 72.65%;
-      }
-    
+      background: linear-gradient 81.57deg, #111111 12.76%,
+        rgba(17, 17, 17, 0) 72.65%;
+    }
+
     @media screen and (min-width: 1280px) {
-      background: linear-gradient 83.06deg,
-        #111111 11.91%,
+      background: linear-gradient 83.06deg, #111111 11.91%,
         rgba(17, 17, 17, 0) 73.11%;
       background-position: 200px 0;
     }
@@ -160,7 +158,7 @@
   }
 }
 
-.weekly-trends-rating {
+.hero-container .weekly-trends-rating {
   margin-bottom: 20px;
 
   @media screen and (min-width: 1280px) {
