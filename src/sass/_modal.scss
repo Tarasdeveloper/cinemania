@@ -169,6 +169,9 @@
         top: 20px;
         right: 16px;
         border: 0px;
+        &:hover .modal-close-icon, &:focus .modal-close-icon {
+            stroke: var(--accent);
+        }
     }
 
     .modal-close-icon {
