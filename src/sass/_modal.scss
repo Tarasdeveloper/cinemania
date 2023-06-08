@@ -24,7 +24,18 @@
         transition: background var(--transit), box-shadow var(--transit);
         position: relative;
         overflow-y: auto;
-        height: 95vh;
+        height: 95%;
+    }
+
+    //! Hide scrollbar for Chrome, Safari and Opera 
+    .modal-window::-webkit-scrollbar {
+        display: none;
+      }
+   
+    //! Hide scrollbar for IE, Edge and Firefox
+    .modal-window  {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
 
     .modal-image {
@@ -125,6 +136,27 @@
         overflow-y: auto;
     }
 
+    
+    //! Scrollbar width
+    .modal-about-description::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    //! Scrollbar Track 
+    .modal-about-description::-webkit-scrollbar-track {
+        background:var(--light-gray);
+    }
+    
+    //! Scrollbar Handle 
+    .modal-about-description::-webkit-scrollbar-thumb {
+        background: var(--linear-one);
+    }
+    
+    //! Scrollbar Handle on hover
+    .modal-about-description::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(141.22deg, #dca71f 9.4%, #db3b17 91.91%);
+    }
+
     .modal-close-button {
         position: absolute;
         width: 24px;
@@ -180,7 +212,8 @@
          padding: 44px 48px 44px 44px;
          display: flex;
          flex-wrap: wrap;
-         height: 488px;
+         height: none;
+         max-height: 488px;
      }
 
     .modal-image {
@@ -192,6 +225,7 @@
 
     .modal-content-wrapper {
         max-width: 302px;
+        overflow-y: hidden;
     }
     
     .modal-title {
@@ -231,7 +265,7 @@
     .modal-window {
          width: 846px;
          padding: 60px;
-         height: 598px;
+         max-height: 598px;
      }
 
     .modal-image {
