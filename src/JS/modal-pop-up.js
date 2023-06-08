@@ -25,6 +25,7 @@ function renderModal({
   vote_count,
   id,
 }) {
+  document.body.classList.add('modal-open');
   const modalPopUpBackdrop = document.querySelector('.modal-pop-up-backdrop');
   modalPopUpBackdrop.innerHTML = ' ';
   const poster = poster_path
@@ -77,12 +78,14 @@ function renderModal({
   modalPopUpBackdrop.style.display = 'flex';
   modalCloseBtn.addEventListener('click', function () {
     modalPopUpBackdrop.style.display = 'none';
+    document.body.classList.remove('modal-open');
   });
   window.addEventListener('click', onPopUpBackdropClick);
   function onPopUpBackdropClick(event) {
     if (event.target == modalPopUpBackdrop) {
       modalPopUpBackdrop.style.display = 'none';
       window.removeEventListener('click', onEscPress, false);
+      document.body.classList.remove('modal-open');
     }
   }
   document.addEventListener('keydown', onEscPress);
@@ -91,6 +94,7 @@ function renderModal({
     if (event.code === ESC_KEYCODE) {
       modalPopUpBackdrop.style.display = 'none';
       document.removeEventListener('keydown', onEscPress, false);
+      document.body.classList.remove('modal-open');
     }
   }
   //
@@ -168,14 +172,14 @@ function renderModal({
     }
   }
   function isId(el) {
-    return el === id
+    return el === id;
   }
   function onClickRemove() {
     let existing = getAddedMovies();
     existing = existing ? existing : [];
     if (existing.includes(id)) {
       let index = existing.findIndex(isId);
-        console.log(index)
+      console.log(index);
 
       existing.splice(index, 1);
       setAddedMovies(existing);

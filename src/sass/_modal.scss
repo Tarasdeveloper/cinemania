@@ -1,5 +1,9 @@
 //! Стилі для мобайл
 @media screen and (min-width: 320px) {
+    body.modal-open { 
+        overflow-y: hidden;
+    }
+    
     .modal-pop-up-backdrop {
         position: fixed;
         top: 0;
