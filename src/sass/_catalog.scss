@@ -115,9 +115,11 @@ body {
 .cards-list__item::before {
   position: absolute;
   content: ' ';
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0) 63.48%,
-      rgba(0, 0, 0, 0.9) 92.16%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
   top: 0;
   left: 0;
   width: 100%;
@@ -279,11 +281,13 @@ body {
 }
 
 .star {
-  background: -webkit-gradient(linear,
-      left top,
-      left bottom,
-      from(#ffc226),
-      to(#f84119));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ffc226),
+    to(#f84119)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
