@@ -1,5 +1,6 @@
 import { openModalPopUp } from './modal-pop-up';
 import axios from 'axios';
+import { showStarsRatingWeeklyTrends } from './star-rating';
 
 export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
@@ -48,6 +49,7 @@ if (url.includes('mylibrary')) {
   }
 
   renderLibrary(libraryFilms);
+
   function makeCard({
     id,
     poster_path,
@@ -67,30 +69,76 @@ if (url.includes('mylibrary')) {
 
     const date = release_date || first_air_date;
 
-    return `<li class="catalog__card" data-id="${id}">
-    <div class="catalog__img-wrapper">
-      <img src="https://image.tmdb.org/t/p/w500${
-        poster_path || 'Oops. There is no poster to this movie'
-      }" alt="${
+    const cardElement = document.createElement('li');
+    cardElement.classList.add('catalog__card');
+    cardElement.dataset.id = id;
+    cardElement.innerHTML = `
+      <div class="catalog__img-wrapper">
+        <img src="https://image.tmdb.org/t/p/w500${
+          poster_path || 'Oops. There is no poster to this movie'
+        }" alt="${
       name || title
     }" width="395" height="574" class="catalog__img lazyload" />
-    </div>
-    <div class="catalog__info info">
-      <p class="info__title">${name || title}</p>
-  <div class="info__wrap">
-  <ul class="info__list">
-<li class="info__descr" style="display:${style}">${stringOfGenres}</li>
-      <li class="info__descr">${convertReleaseDate(date)}</li>
-      </ul>
-  <div class="catalog__stars-wrap">
-  <div class="catalog__rating-active" style="width:${
-    vote_average / 2 / 0.05
-  }%"></div>
-  </div>
-  </div>
-    </div>
-  </li>`;
+      </div>
+      <div class="catalog__info info">
+        <p class="info__title">${name || title}</p>
+        <div class="info__wrap">
+          <ul class="info__list">
+            <li class="info__descr" style="display:${style}">${stringOfGenres}</li>
+            <li class="info__descr">${convertReleaseDate(date)}</li>
+          </ul>
+        </div>
+        <div class="weekly-trends-rating">
+          <div class="weekly-trends-rating-body">
+            <div class="weekly-trends-rating-active">
+              <div class="weekly-trends-rating-items">
+                <input
+                  type="radio"
+                  class="weekly-trends-rating-item"
+                  value="1"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="weekly-trends-rating-item"
+                  value="2"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="weekly-trends-rating-item"
+                  value="3"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="weekly-trends-rating-item"
+                  value="4"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="weekly-trends-rating-item"
+                  value="5"
+                  name="rating"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const ratingsArrayWeeklyTrends = cardElement.querySelectorAll(
+      '.weekly-trends-rating'
+    );
+    if (ratingsArrayWeeklyTrends.length > 0) {
+      showStarsRatingWeeklyTrends(ratingsArrayWeeklyTrends, { vote_average });
+    }
+
+    return cardElement.outerHTML;
   }
+
   function convertReleaseDate(date) {
     if (date) {
       return date.slice(0, 4);
@@ -105,6 +153,7 @@ if (url.includes('mylibrary')) {
     });
     return arr.slice(0, 2);
   }
+
   myLibGallery.addEventListener('click', openModal);
   function openModal(event) {
     console.dir(event.target.offsetParent.dataset.id);
