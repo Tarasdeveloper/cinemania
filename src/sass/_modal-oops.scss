@@ -8,8 +8,8 @@ body {
       .modal-oops-title {
         color: var(--black-bg);
       }
-      .modal-oops-close-btn {
-        color: var(--black-bg);
+      .modal-oops-card {
+        box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
       }
     }
   }
@@ -51,12 +51,15 @@ body {
   width: 16px;
   height: 16px;
   position: absolute;
-  top: 8px;
+  top: 20px;
   right: 20px;
-  color: var(--white);
-  transition: color var(--transit);
-  &:hover {
-    color: var(--accent);
+  .modal-close-icon {
+    width: 16px;
+    height: 16px;
+  }
+  &:hover .modal-close-icon, 
+  &:focus .modal-close-icon {
+    stroke: var(--accent);
   }
 }
 
@@ -81,6 +84,10 @@ body {
   .modal-oops-close-btn {
     top: 24px;
     right: 24px;
+    .modal-close-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .modal-oops-title {
