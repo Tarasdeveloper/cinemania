@@ -1,10 +1,8 @@
 body {
-  
   &.is-open-menu {
     @media (max-width: 767px) {
       overflow: hidden;
     }
-    
   }
   &.is-light-mode {
     background-color: var(--white);
@@ -22,6 +20,9 @@ body {
     .mob-menu {
       color: var(--black-bg);
       background-color: var(--light-text);
+      &__links {
+        color: currentColor;
+      }
     }
     .backdrop {
       background-color: rgba(0, 0, 0, 0.2);
@@ -58,15 +59,15 @@ body {
     gap: 8px;
   }
 
-  &__links{
+  &__links {
     display: block;
     padding: 15px 0;
     transition: color var(--transit);
-    
+
     &:hover,
     &:focus {
-        color: var(--accent);
-      }
+      color: var(--accent);
+    }
   }
 
   &__nav {
@@ -149,8 +150,8 @@ body {
   font-family: 'Roboto';
 
   @media (min-width: 768px) {
-      display: none;
-    }
+    display: none;
+  }
 }
 
 .mob-menu {
@@ -171,13 +172,13 @@ body {
     margin-bottom: 40px;
   }
 
-  &__links{
+  &__links {
     color: var(--white);
 
     &:hover,
     &:focus {
       color: var(--accent);
-      }
+    }
   }
 
   &__nav {
@@ -193,5 +194,5 @@ body {
 
 .mob-menu.is-open-menu {
   transform: translateX(-56.3%);
-  transition: fill, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill, var(--transit);
 }
