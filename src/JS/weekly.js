@@ -1,6 +1,7 @@
 import API_key from './api_key';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalPopUp } from './modal-pop-up.js';
+import img from '../images/coming_soon_default.jpg';
 
 window.addEventListener('DOMContentLoaded', () => {
   const filmsContainerWeeklyTrends = document.getElementById(
@@ -56,7 +57,7 @@ function createFilmCardWeeklyTrends(movie, data) {
   if (movie.poster_path) {
     const posterUrlWeeklyTrends = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : '/src/images/coming_soon_default.jpg';
+      : img;
     const posterWeeklyTrends = document.createElement('img');
     posterWeeklyTrends.src = posterUrlWeeklyTrends;
     posterWeeklyTrends.alt = `${movie.title} Poster`;
