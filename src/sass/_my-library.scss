@@ -200,7 +200,7 @@ body {
   width: 123px;
   padding: 12px 24px;
   margin: 0 auto;
-  transition: color 250ms var(--cubic), background 250ms var(--cubic);
+  transition: color var(--transit), background var(--transit);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
