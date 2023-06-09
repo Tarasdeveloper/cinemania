@@ -1,6 +1,7 @@
 import { openModalPopUp } from './modal-pop-up';
 import axios from 'axios';
 import { showStarsRatingWeeklyTrends } from './star-rating';
+import img from '../images/coming_soon_default.jpg';
 
 export const myLibGallery = document.querySelector('.mylib-gallery__list');
 const libContent = document.querySelector('#is-hidden');
@@ -72,11 +73,12 @@ if (url.includes('mylibrary')) {
     const cardElement = document.createElement('li');
     cardElement.classList.add('catalog__card');
     cardElement.dataset.id = id;
+    const imagePath = poster_path
+      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+      : img;
     cardElement.innerHTML = `
       <div class="catalog__img-wrapper">
-        <img src="https://image.tmdb.org/t/p/w500${
-          poster_path || 'Oops. There is no poster to this movie'
-        }" alt="${
+        <img src="${imagePath}" alt="${
       name || title
     }" width="395" height="574" class="catalog__img lazyload" />
       </div>
