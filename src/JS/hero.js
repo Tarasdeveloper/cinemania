@@ -59,23 +59,35 @@ async function displayTrendingMovie() {
 
 function createAndShowLightbox(keyTrailer) {
   const content = `
+  <div class="watch-trailer-backdrop">
     <div class="video-container">
-      <button class="close-btn">X</button>
       <iframe class="iframe" src="https://www.youtube.com/embed/${keyTrailer}" width="560" height="315" frameborder="0"></iframe>
     </div>
+  </div>
   `;
 
   lightboxInstance = basicLightbox.create(content);
 
   lightboxInstance.show(() => {
     console.log('lightbox now visible');
-    const closeBtn = lightboxInstance.element().querySelector('.close-btn');
-    closeBtn.addEventListener('click', resetLightbox);
+    document.body.classList.add('modal-open');
   });
 
   window.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       resetLightbox();
+      document.body.classList.remove('modal-open');
+    }
+  });
+
+  const watchTrailerBackdrop = document.querySelector(
+    '.watch-trailer-backdrop'
+  );
+
+  watchTrailerBackdrop.addEventListener('click', evt => {
+    if (evt.target === evt.currentTarget) {
+      resetLightbox();
+      document.body.classList.remove('modal-open');
     }
   });
 

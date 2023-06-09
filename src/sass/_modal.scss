@@ -4,6 +4,23 @@
         overflow-y: hidden;
     }
     
+    .watch-trailer-backdrop 
+     {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        background-color: rgba(46, 47, 66, 0.4);
+        z-index: 1000;
+        transition: display var(--transit);
+        overflow-y: hidden;
+
+        .video-container {
+            z-index: 1001;
+        }
+
+    }
+
     .modal-pop-up-backdrop {
         position: fixed;
         top: 0;
