@@ -88,14 +88,14 @@ body {
 .library-section {
   width: 100%;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 0 20px;
 
   @media screen and (min-width: 768px) {
-    padding: 60px 32px;
+    padding: 0 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 80px 117px;
+    padding: 0 117px;
   }
 }
 
