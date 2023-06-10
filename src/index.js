@@ -5,7 +5,6 @@ import './JS/day_night';
 import './JS/modal-menu';
 import './JS/hero';
 import './JS/teamModal';
-import './JS/team';
 import './JS/weekly';
 import './JS/catalog';
 import './JS/library';
