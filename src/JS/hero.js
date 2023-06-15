@@ -4,6 +4,7 @@ import { openModalPopUp } from './modal-pop-up.js';
 import { showStarsRatingWeeklyTrends } from './star-rating.js';
 import { openModalOops } from './modal-oops';
 import { openModalOopsDetails } from './modal-oops-details';
+import img from '../images/coming_soon_default.jpg';
 
 const hero = document.querySelector('.hero');
 let lightboxInstance = null;
@@ -106,6 +107,9 @@ function resetLightbox() {
 function createTrendingMarkup(movieOfDay) {
   const movieTitle = movieOfDay.title || movieOfDay.name;
   const movieDescription = movieOfDay.overview.slice(0, 108) + '...';
+  const imagePath = movieOfDay.backdrop_path
+    ? `https://image.tmdb.org/t/p/w500${movieOfDay.backdrop_path}`
+    : img;
 
   const markup = `
     <div class="hero-container">
@@ -113,7 +117,7 @@ function createTrendingMarkup(movieOfDay) {
         <div class="hero-container__background-dark"></div>
         <div class="hero-container__background-darker"></div>
         <div class="hero-container__background-image" 
-          style="background-image: url(https://image.tmdb.org/t/p/original${movieOfDay.backdrop_path}" alt="Hero image" class="backend" loading="lazy");"> 
+          style="background-image: url(https://image.tmdb.org/t/p/original${imagePath}" alt="Hero image" class="backend" loading="lazy");"> 
         </div>
       </div>
       <div class="hero-container__card">
