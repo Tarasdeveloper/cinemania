@@ -1,3 +1,3 @@
 # Parcel template
 
-Этот проект был создан при помощи Parcel
+Made by team with: Parcel, html, scss, javascript, trello
